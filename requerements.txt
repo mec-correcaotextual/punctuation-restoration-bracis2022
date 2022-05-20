@@ -1,0 +1,8 @@
+spacy==3.2.4
+pt_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/pt_core_news_sm-3.2.0/pt_core_news_sm-3.2.0-py3-none-any.whl
+pt_core_news_md @ https://github.com/explosion/spacy-models/releases/download/pt_core_news_md-3.2.0/pt_core_news_md-3.2.0-py3-none-any.whl
+pt_core_news_md @ https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.2.0/pt_core_news_md-3.2.0-py3-none-any.whl
+plac
+pandas
+
+
