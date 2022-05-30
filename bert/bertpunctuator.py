@@ -7,8 +7,8 @@ Original file is located at
     https://colab.research.google.com/drive/191TmDhyzcrfzr77G3_-xe2zxcQVR8j8_
 """
 
+
 from collections import Counter
-import re 
 from collections import defaultdict
 from spacy.matcher import Matcher
 from spacy.tokens import Span
@@ -21,7 +21,7 @@ import numpy as np
 from spacy.scorer import Scorer
 import os
 import pandas as pd
-import argparse 
+import argparse
 import wandb
 from simpletransformers.ner import NERModel, NERArgs
 import torch
@@ -67,13 +67,7 @@ zipfile.extractall(path='./')
 DATASET_NAME = os.path.split(args.dataset)[-1]
 BASE_DIR = args.dataset
 
-dataset = {
-    
-}
-
-for filename in os.listdir(BASE_DIR):
-  dataset[filename.replace('.csv', '')] = pd.read_csv(os.path.join(BASE_DIR, filename)).dropna()
-
+dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(BASE_DIR, filename)).dropna() for filename in os.listdir(BASE_DIR)}
 
 
 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
@@ -122,7 +116,6 @@ pd.DataFrame.from_dict(result, orient='index').T.to_csv('overall_model_result.cs
 nlp = spacy.blank('pt')
 
 def preprocess_data(dataframe):
-     
 
     TOTAL = len(list(dataframe.groupby("sentence_id")))
     data = []
