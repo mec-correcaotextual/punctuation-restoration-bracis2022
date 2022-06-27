@@ -102,6 +102,8 @@ for i in range(args.iters):
 
     ents_per_type = scores.pop('ents_per_type')
     ents = pd.DataFrame.from_dict(ents_per_type, orient='index').loc[:, ['p', 'r', 'f']]
+    print(ents_per_type)
+    print(ents)
     ents_score.append(ents)
     scores_dts.append(pd.DataFrame.from_dict(scores, orient='index').T)
 
