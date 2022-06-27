@@ -101,10 +101,10 @@ for i in range(args.iters):
     scores = get_ner_prf(examples)
 
     ents_per_type = scores.pop('ents_per_type')
-    ents = pd.DataFrame.from_dict(ents_per_type, orient='index').loc[:, ['p', 'r', 'f']].T
-    print(ents_per_type)
-    print(ents)
-    ents_score.append(ents)
+    ents = pd.DataFrame.from_dict(ents_per_type, orient='index').loc[:, ['p', 'r', 'f']].T.COMMA.T
+
+    print(ents.f.T)
+    ents_score.append(ents.f.T)
     scores_dts.append(pd.DataFrame.from_dict(scores, orient='index').T)
 
 pd.concat(ents_score).to_csv('tst_ents_per_type.csv', index=False, index_label=False)
