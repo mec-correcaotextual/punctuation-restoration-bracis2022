@@ -101,7 +101,7 @@ for i in range(args.iters):
     scores = get_ner_prf(examples)
 
     ents_per_type = scores.pop('ents_per_type')
-    ents_score.append(pd.DataFrame.from_dict(ents_per_type, orient='index').T)
+    ents_score.append(pd.DataFrame.from_dict(ents_per_type, orient='index')['f'].T)
     scores_dts.append(pd.DataFrame.from_dict(scores, orient='index').T)
 
 pd.concat(ents_score).to_csv('tst_ents_per_type.csv', index=False, index_label=False)
