@@ -65,7 +65,7 @@ model = NERModel(
 
 y_true = []
 texts = []
-for _, group in dataset['test'].groupby("sentence_id"):
+for _, group in dataset.groupby("sentence_id"):
     text = " ".join(group.words)
     texts.append(text)
     y_true.append(group.labels.apply(lambda label: label.replace("I-", "")).tolist())
