@@ -101,7 +101,7 @@ for i in range(args.iters):
     scores = get_ner_prf(examples)
 
     ents_per_type = scores.pop('ents_per_type')
-    ents = pd.DataFrame.from_dict(ents_per_type, orient='index').loc[:, ['p', 'r', 'f']]
+    ents = pd.DataFrame.from_dict(ents_per_type, orient='index').loc[:, ['p', 'r', 'f']].T
     print(ents_per_type)
     print(ents)
     ents_score.append(ents)
