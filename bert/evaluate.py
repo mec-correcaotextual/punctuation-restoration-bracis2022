@@ -106,4 +106,4 @@ for i in range(args.iters):
 
 pd.concat(ents_score).to_csv('tst_ents_per_type.csv', index=False, index_label=False)
 
-pd.DataFrame(scores_dts).to_csv('tst_scores.csv', index=False, index_label=False)
+pd.concat(scores_dts).to_csv('tst_scores.csv', index=False, index_label=False)
