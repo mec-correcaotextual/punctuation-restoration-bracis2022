@@ -37,6 +37,9 @@ parser = argparse.ArgumentParser(description='Process dataframe data.')
 parser.add_argument('--test_df',
                     help='input files', default='./data/test.csv')
 
+parser.add_argument('--iters',
+                    help='Number of tests', default=10, type=int)
+
 parser.add_argument('--bert_model', default="neuralmind/bert-base-portuguese-cased",
                     help='It must one of such models valid bert model, see hugginface plataform or dir.')
 args = parser.parse_args()
@@ -91,11 +94,15 @@ for i, (text, entities) in enumerate(TEST_DATA):
     example = Example.from_dict(doc, entities)
     examples.append(example)
 
-scores = get_ner_prf(examples)
+ents_score = []
+scores_dts = []
+for i in range(args.iters):
+    scores = get_ner_prf(examples)
 
-ents_per_type = scores.pop('ents_per_type')
-pd.DataFrame(ents_per_type).to_csv(os.path.join(path_to_model, 'tst_ents_per_type.csv'),
-                                   index=False, index_label=False)
+    ents_per_type = scores.pop('ents_per_type')
+    ents_score.append(ents_per_type)
+    scores_dts.append(scores)
 
-pd.DataFrame.from_dict(scores, orient='index').T.to_csv(os.path.join(path_to_model, 'tst_scores.csv'), index=False,
-                                                        index_label=False)
+pd.DataFrame(ents_score).to_csv('tst_ents_per_type.csv', index=False, index_label=False)
+
+pd.DataFrame(scores_dts).T.to_csv('tst_scores.csv', index=False, index_label=False)
