@@ -101,9 +101,9 @@ for i in range(args.iters):
     scores = get_ner_prf(examples)
 
     ents_per_type = scores.pop('ents_per_type')
-    ents_score.append(ents_per_type)
-    scores_dts.append(scores)
+    ents_score.append(pd.DataFrame(ents_per_type))
+    scores_dts.append(pd.DataFrame(scores))
 
-pd.DataFrame(ents_score).to_csv('tst_ents_per_type.csv', index=False, index_label=False)
+pd.concat(ents_score).to_csv('tst_ents_per_type.csv', index=False, index_label=False)
 
-pd.DataFrame(scores_dts).T.to_csv('tst_scores.csv', index=False, index_label=False)
+pd.DataFrame(scores_dts).agg(['mean', 'std']).to_csv('tst_scores.csv', index=False, index_label=False)
