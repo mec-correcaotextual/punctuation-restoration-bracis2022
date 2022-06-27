@@ -10,6 +10,7 @@ from spacy.training import Example
 from tqdm import tqdm
 from spacy.tokens import Span
 
+nlp = spacy.blank('pt')
 
 def preprocess_data(dataframe):
     TOTAL = len(list(dataframe.groupby("sentence_id")))
@@ -49,7 +50,7 @@ dataset = pd.read_csv(args.test_df).dropna()
 
 TEST_DATA = preprocess_data(dataset)
 
-nlp = spacy.blank('pt')
+
 
 model_args = NERArgs()
 model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
