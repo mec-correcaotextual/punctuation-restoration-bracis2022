@@ -17,9 +17,11 @@ from simpletransformers.ner import NERModel
 parser = argparse.ArgumentParser(description='Process dataframe data.')
 
 parser.add_argument('--output_file',
+                    default='./results/',
                     help='output filename')
 
 parser.add_argument('--path_to_data',
+                    default='./data/',
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
 parser.add_argument('--bert_model', default="neuralmind/scripts-base-portuguese-cased",
