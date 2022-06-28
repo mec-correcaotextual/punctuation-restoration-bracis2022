@@ -67,7 +67,7 @@ train_args = {
 
 model = NERModel(
     "bert",
-    model_name,
+    './outputs/',
     args=train_args,
     use_cuda=torch.cuda.is_available()
 )
