@@ -87,6 +87,6 @@ for filename in os.listdir(BASE_DIR):
 
 df = pd.DataFrame(np.array(dataset2), columns=['sentence_id', 'labels', 'words'])
 train_df, dev_df, test_df = split_df(df)
-train_df.to_csv(f'{PATH_TO_SAVE}/train.csv', index=False, index_label=False)
-dev_df.to_csv(f'{PATH_TO_SAVE}/dev.csv', index=False, index_label=False)
-test_df.to_csv(f'{PATH_TO_SAVE}/test.csv', index=False, index_label=False)
+train_df.to_csv(os.path.join(BASE_DIR, 'train.csv'), index=False, index_label=False)
+dev_df.to_csv(os.path.join(BASE_DIR, 'dev.csv'), index=False, index_label=False)
+test_df.to_csv(os.path.join(BASE_DIR, 'test.csv'), index=False, index_label=False)

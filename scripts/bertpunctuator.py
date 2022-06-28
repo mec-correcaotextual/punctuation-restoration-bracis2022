@@ -16,7 +16,7 @@ from simpletransformers.ner import NERModel
 
 parser = argparse.ArgumentParser(description='Process dataframe data.')
 
-parser.add_argument('--output_file',
+parser.add_argument('--result_path',
                     default='./results/',
                     help='output filename')
 
@@ -70,6 +70,10 @@ model = NERModel(
 model.train_model(dataset['train'], eval_data=dataset['dev'])
 result, model_outputs, wrong_preds = model.eval_model(dataset['test'])
 
-pd.DataFrame.from_dict(result, orient='index').T.to_csv('overall_model_result.csv', index=False, index_label=False)
+if os.path.exists(args.result_path):
+    os.makedirs(args.result_path)
+
+pd.DataFrame.from_dict(result, orient='index').T.to_csv(os.path.join(args.result_path,'overall_model_result.csv'),
+                                                        index=False, index_label=False)
 
 
