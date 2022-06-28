@@ -42,8 +42,8 @@ parser.add_argument('--test_df',
 parser.add_argument('--iters',
                     help='Number of tests', default=10, type=int)
 
-parser.add_argument('--bert_model', default="neuralmind/bert-base-portuguese-cased",
-                    help='It must one of such models valid bert model, see hugginface plataform or dir.')
+parser.add_argument('--bert_model', default="neuralmind/scripts-base-portuguese-cased",
+                    help='It must one of such models valid scripts model, see hugginface plataform or dir.')
 args = parser.parse_args()
 
 BASE_DIR = "data/test"
@@ -56,7 +56,7 @@ model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
 
 path_to_model = args.bert_model
 model = NERModel(
-    "bert",
+    "scripts",
     path_to_model,
     args=model_args,
     use_cuda=torch.cuda.is_available()
