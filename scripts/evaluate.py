@@ -37,16 +37,18 @@ def preprocess_data(dataframe):
 parser = argparse.ArgumentParser(description='Process dataframe data.')
 
 parser.add_argument('--test_df',
-                    help='input files', default='./data/test.csv')
+                    help='input files', default='./data/tedtalk2012/test.csv')
 
 parser.add_argument('--iters',
                     help='Number of tests', default=10, type=int)
+
+parser.add_argument('--result_path',
+                    help='results path', default='./results/', type=int)
 
 parser.add_argument('--bert_model', default="neuralmind/scripts-base-portuguese-cased",
                     help='It must one of such models valid scripts model, see hugginface plataform or dir.')
 args = parser.parse_args()
 
-BASE_DIR = "data/test"
 dataset = pd.read_csv(args.test_df).dropna()
 
 TEST_DATA = preprocess_data(dataset)
@@ -56,7 +58,7 @@ model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
 
 path_to_model = args.bert_model
 model = NERModel(
-    "scripts",
+    "bert",
     path_to_model,
     args=model_args,
     use_cuda=torch.cuda.is_available()
@@ -105,6 +107,6 @@ for i in range(args.iters):
     ents_score.append(ents.T)
     scores_dts.append(pd.DataFrame.from_dict(scores, orient='index').T)
 
-pd.concat(ents_score).to_csv('tst_ents_per_type.csv', index=False, index_label=False)
+pd.concat(ents_score).to_csv(os.path.join(args.result_path, 'tst_ents_per_type.csv'), index=False, index_label=False)
 
-pd.concat(scores_dts).to_csv('tst_scores.csv', index=False, index_label=False)
+pd.concat(scores_dts).to_csv(os.path.join(args.result_path, 'tst_scores.csv'), index=False, index_label=False)

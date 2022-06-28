@@ -24,13 +24,17 @@ parser.add_argument('--path_to_data',
                     default='./data/',
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
+parser.add_argument('--dataset',
+                    default='tedtalk2012',
+                    help='Files must be a dataframe with headers sentence_id,words,label')
+
 parser.add_argument('--bert_model', default="neuralmind/scripts-base-portuguese-cased",
                     help='It must one of such models valid scripts model, see hugginface plataform.')
 
 args = parser.parse_args()
 
 DATASET_NAME = os.path.split(args.path_to_data)[-1]
-BASE_DIR = args.path_to_data
+BASE_DIR = os.path.join(args.path_to_data, args.dataset)
 
 dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(BASE_DIR, filename)).dropna()
            for filename in os.listdir(BASE_DIR)}
