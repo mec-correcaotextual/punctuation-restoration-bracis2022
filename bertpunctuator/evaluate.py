@@ -45,8 +45,8 @@ parser.add_argument('--iters',
 parser.add_argument('--result_path',
                     help='results path', default='./results/', type=int)
 
-parser.add_argument('--bert_model', default="neuralmind/scripts-base-portuguese-cased",
-                    help='It must one of such models valid scripts model, see hugginface plataform or dir.')
+parser.add_argument('--bert_model', default="neuralmind/bertpunctuator-base-portuguese-cased",
+                    help='It must one of such models valid bertpunctuator model, see hugginface plataform or dir.')
 args = parser.parse_args()
 
 dataset = pd.read_csv(args.test_df).dropna()

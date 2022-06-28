@@ -28,8 +28,8 @@ parser.add_argument('--dataset',
                     default='tedtalk2012',
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
-parser.add_argument('--bert_model', default="neuralmind/scripts-base-portuguese-cased",
-                    help='It must one of such models valid scripts model, see hugginface plataform.')
+parser.add_argument('--bert_model', default="neuralmind/bert-base-portuguese-cased",
+                    help='It must one of such models valid bert model, see hugginface plataform.')
 
 args = parser.parse_args()
 
@@ -42,7 +42,7 @@ dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(BASE_DIR, file
 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
 # Create a new run
-project = "scripts-base-punct"
+project = "bert-base-punct"
 # Connect an Artifact to the run
 model_name = args.bert_model
 
@@ -66,7 +66,7 @@ train_args = {
 }
 
 model = NERModel(
-    "scripts",
+    "bert",
     model_name,
     args=train_args,
     use_cuda=torch.cuda.is_available()
