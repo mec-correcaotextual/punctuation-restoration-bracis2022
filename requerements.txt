@@ -4,3 +4,4 @@ plac
 pandas
 simpletransformers
 
+wandb
