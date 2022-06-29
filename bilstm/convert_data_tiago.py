@@ -45,9 +45,9 @@ if __name__ == '__main__':
     # corpus_name = 'obras'
     corpus_name = 'tedtalk2012'
 
-    train_file = f'../data/train.csv'
-    dev_file = f'../data/dev.csv'
-    test_file = f'../data/test.csv'
+    train_file = f'./data/tedtalk2012/train.csv'
+    dev_file = f'./data/tedtalk2012/dev.csv'
+    test_file = f'./data/tedtalk2012/test.csv'
 
     new_files_dir = f'./data/{corpus_name}'
 
