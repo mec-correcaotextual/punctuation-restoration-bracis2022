@@ -11,7 +11,7 @@ from utils import generate_test_file
 if __name__ == '__main__':
 
     # corpus_name = 'tiago_tedtalk2012'
-    corpus_name = 'tiago_obras'
+    corpus_name = 'tiago_tedtalk2012'
     glove_file = './embeddings/glove_s300.gensim'
     word2vec_cbow_file = './embeddings/cbow_s300.gensim'
     word2vec_skip_file = './embeddings/skip_s300.gensim'
