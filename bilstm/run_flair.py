@@ -7,6 +7,7 @@ from flair.models import SequenceTagger
 from flair.trainers import ModelTrainer
 from flair.optim import SGDW
 from utils import generate_test_file
+from transformers import TrainingArguments, Trainer
 
 if __name__ == '__main__':
 
@@ -111,15 +112,14 @@ if __name__ == '__main__':
 
     tagger = SequenceTagger(hidden_size=256, embeddings=embeddings, tag_dictionary=tag_dictionary,
                             tag_type=tag_type, use_crf=is_use_crf)
-
-    trainer = ModelTrainer(tagger, corpus)
-
     wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
-    with wandb.init(project="bert-base-punct") as run:
+    with wandb.init(project="bert-base-punct", entity="tblima") as run:
         run.name = f'bilstm_{corpus_name}'
+        args = TrainingArguments(..., report_to="wandb")
+        trainer = ModelTrainer(tagger, corpus, args=args)
 
-    trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size, max_epochs=n_epochs)
+        trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size, max_epochs=n_epochs)
 
     test_results_file = os.path.join(model_dir, 'test.tsv')
 
