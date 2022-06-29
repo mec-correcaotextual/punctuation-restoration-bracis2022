@@ -64,6 +64,8 @@ def replace(sent_id, sentence):
 
     return sent_data
 
+if not os.path.exists(PATH_TO_SAVE):
+    os.makedirs(PATH_TO_SAVE)
 
 for filename in os.listdir(BASE_DIR):
     dataset2 = []
