@@ -12,7 +12,7 @@ parser.add_argument('--text_path',
                     help='input files', default='../texts/tedtalk2012/')
 
 parser.add_argument('--output_path',
-                    help='Dir to save output files', default='./data/')
+                    help='Dir to save output files', default='./data/tedtalk2012/')
 
 args = parser.parse_args()
 

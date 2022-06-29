@@ -49,7 +49,7 @@ if __name__ == '__main__':
         print('Corpus option invalid!')
         exit(0)
 
-    model_dir = '../data/models/bilstm'
+    model_dir = './models/bilstm'
 
     if is_use_w2v_skip:
         model_dir += '_w2v_skip'
