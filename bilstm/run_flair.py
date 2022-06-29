@@ -11,7 +11,7 @@ from utils import generate_test_file
 if __name__ == '__main__':
 
     # corpus_name = 'tiago_tedtalk2012'
-    corpus_name = 'tiago_tedtalk2012'
+    corpus_name = 'tedtalk2012'
     glove_file = './embeddings/glove_s300.gensim'
     word2vec_cbow_file = './embeddings/cbow_s300.gensim'
     word2vec_skip_file = './embeddings/skip_s300.gensim'
@@ -39,7 +39,7 @@ if __name__ == '__main__':
         train_file = 'train.csv'
         val_file = 'dev.csv'
         test_file = 'test.csv'
-    elif corpus_name == 'tiago_tedtalk2012':
+    elif corpus_name == 'tedtalk2012':
         columns = {0: 'token', 1: 'ner'}
         data_folder = './data/tedtalk2012'
         train_file = 'train.csv'
