@@ -92,7 +92,10 @@ for filename in os.listdir(BASE_DIR):
         if len(emotions) > 0:
             continue
 
-        dataset2.extend(replace(text))
+        with open(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), 'a') as f:
+            for token, tag in replace(text):
+                f.write(f'{token}\t{tag}\n')
+            f.write('\n')
+            f.close()
 
-    df = pd.DataFrame(np.array(dataset2), columns=['token', 'ner'])
-    df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False, header=False, sep='\t')
+
