@@ -1,8 +1,8 @@
 from gensim.models import KeyedVectors
 
 if __name__ == '__main__':
-    embeddings_txt_file = './embeddings/glove_s300.txt'
-    embeddings_bin_file = './embeddings/glove_s300.gensim'
+    embeddings_txt_file = './embeddings/skip_s300.txt'
+    embeddings_bin_file = './embeddings/skip_s300.gensim'
 
     print('\nConverting TXT Embedding to Binary ...')
 
