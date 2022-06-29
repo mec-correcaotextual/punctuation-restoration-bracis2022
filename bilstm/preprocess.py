@@ -65,6 +65,9 @@ def replace(sentence):
     return sent_data
 
 
+if not os.path.exists(PATH_TO_SAVE):
+    os.makedirs(PATH_TO_SAVE)
+
 for filename in os.listdir(BASE_DIR):
     dataset2 = []
 
@@ -91,5 +94,5 @@ for filename in os.listdir(BASE_DIR):
 
         dataset2.extend(replace(text))
 
-    df = pd.DataFrame(np.array(dataset2), columns=['words','labels'])
-    df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False,header=False)
+    df = pd.DataFrame(np.array(dataset2), columns=['words', 'labels'])
+    df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False, header=False)
