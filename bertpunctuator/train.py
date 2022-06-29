@@ -62,7 +62,7 @@ train_args = {
     'labels_list': dataset['train'].labels.unique().tolist(),
     'use_early_stopping': True,
     'wandb_project': project,
-    'wandb_kwargs': {'name': DATASET_NAME + '_' + model_name},
+    'wandb_kwargs': {'name': DATASET_NAME},
 }
 
 model = NERModel(
