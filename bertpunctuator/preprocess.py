@@ -47,7 +47,7 @@ def replace(sent_id, sentence):
 
     tokens = tokenizer.tokenize(sentence.lower())
     sent_data = []
-    for i, token in enumerate(tokens):
+    for _, token in enumerate(tokens):
         try:
             if token not in ['.', ',', '?']:
                 sent_data.append([sent_id, 'O', token])
@@ -65,28 +65,31 @@ def replace(sent_id, sentence):
     return sent_data
 
 
-i = 0
-dataset2 = []
-text_dts_obras = []
 for filename in os.listdir(BASE_DIR):
+    dataset2 = []
+
+    if filename.endswith(".train.txt"):
+        filetype = "train"
+    elif filename.endswith(".test.txt"):
+        filetype = "test"
+    elif filename.endswith(".dev.txt"):
+        filetype = "dev"
+    else:
+        filetype = "other"
+
     file = open(os.path.join(BASE_DIR, filename))
     data = file.readlines()
 
-    for line in data:
-
+    for i, line in enumerate(data):
         text = re.sub(r'[!;]', '.', line)
         text = re.sub(r'[:]', ',', text)
         text = re.sub(r'\s[-]\s', ',', text).lower()
 
-        emotions = re.findall('\(\w+\)', text)
+        emotions = re.findall(r'\(\w+\)', text)
         if len(emotions) > 0:
             continue
-        text_dts_obras.append(text)
-        dataset2.extend(replace(i, text))
-        i += 1
 
-df = pd.DataFrame(np.array(dataset2), columns=['sentence_id', 'labels', 'words'])
-train_df, dev_df, test_df = split_df(df)
-train_df.to_csv(os.path.join(BASE_DIR, 'train.csv'), index=False, index_label=False)
-dev_df.to_csv(os.path.join(BASE_DIR, 'dev.csv'), index=False, index_label=False)
-test_df.to_csv(os.path.join(BASE_DIR, 'test.csv'), index=False, index_label=False)
+        dataset2.extend(replace(i, text))
+
+    df = pd.DataFrame(np.array(dataset2), columns=['sentence_id', 'labels', 'words'])
+    df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False)
