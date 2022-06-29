@@ -95,4 +95,4 @@ for filename in os.listdir(BASE_DIR):
         dataset2.extend(replace(text))
 
     df = pd.DataFrame(np.array(dataset2), columns=['token', 'ner'])
-    df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False, header=False)
+    df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False, header=False, sep='\t')
