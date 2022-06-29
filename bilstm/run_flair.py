@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
     with wandb.init(project="bert-base-punct", entity="tblima") as run:
         run.name = f'bilstm_{corpus_name}'
-        args = TrainingArguments(..., report_to="wandb")
+        args = TrainingArguments( report_to="wandb")
         trainer = ModelTrainer(tagger, corpus, args=args)
 
         trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size, max_epochs=n_epochs)
