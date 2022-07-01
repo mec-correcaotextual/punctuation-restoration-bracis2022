@@ -74,7 +74,7 @@ model = NERModel(
 model.train_model(dataset['train'], eval_data=dataset['dev'])
 result, model_outputs, wrong_preds = model.eval_model(dataset['test'])
 
-if os.path.exists(args.result_path):
+if not os.path.exists(args.result_path):
     os.makedirs(args.result_path)
 
 pd.DataFrame.from_dict(result, orient='index').T.to_csv(os.path.join(args.result_path,'overall_model_result.csv'),

@@ -43,7 +43,7 @@ parser.add_argument('--iters',
                     help='Number of tests', default=10, type=int)
 
 parser.add_argument('--result_path',
-                    help='results path', default='./results/', type=int)
+                    help='results path', default='./results/', type=str)
 
 parser.add_argument('--bert_model', default="neuralmind/bertpunctuator-base-portuguese-cased",
                     help='It must one of such models valid bertpunctuator model, see hugginface plataform or dir.')
