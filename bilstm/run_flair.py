@@ -37,7 +37,7 @@ if __name__ == '__main__':
     model_dir = './models/bilstm'
 
     embeddings = None
-
+    embedding_name = ''
     if args.embeddings:
 
         print(f'\nRunning using {args.embeddings}')
@@ -52,6 +52,8 @@ if __name__ == '__main__':
         if traditional_embedding is not None:
             embedding_types.append(traditional_embedding)
             embeddings = StackedEmbeddings(embeddings=embedding_types)
+        embedding_name = args.embeddings.split('/')[-1].split('.')[0]
+        model_dir += f'_{embedding_name}'
 
     if args.use_crf:
         model_dir += '_crf'
@@ -88,7 +90,7 @@ if __name__ == '__main__':
     batch_size = 32
     project = "punctuation-restoration"
     with wandb.init(project=project) as run:
-        embedding_name = args.embeddings.split('/')[-1].split('.')[0]
+
         run.name = f'bilstm_{embedding_name}'
         trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size, max_epochs=n_epochs)
 

@@ -52,13 +52,13 @@ def replace(sentence):
             if token not in ['.', ',', '?']:
                 sent_data.append([token.replace(" ", ""), 'O'])
             elif token == '.':
-                sent_data[-1][1] = 'PERIOD'
+                sent_data[-1][1] = 'I-PERIOD'
 
             elif token == ',':
-                sent_data[-1][1] = 'COMMA'
+                sent_data[-1][1] = 'I-COMMA'
 
             elif token == '?':
-                sent_data[-1][1] = 'QUESTION'
+                sent_data[-1][1] = 'I-QUESTION'
         except IndexError:
             continue
 
