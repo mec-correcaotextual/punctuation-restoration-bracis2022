@@ -74,7 +74,7 @@ if __name__ == '__main__':
     tag_type = 'ner'
 
     tag_dictionary = corpus.make_label_dictionary(label_type=tag_type)
-
+    tag_dictionary.remove_item('<unk>')
     print('\nTags: ', tag_dictionary.idx2item)
 
     tagger = SequenceTagger(hidden_size=256, embeddings=embeddings, tag_dictionary=tag_dictionary,
