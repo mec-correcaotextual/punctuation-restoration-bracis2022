@@ -82,7 +82,7 @@ for filename in os.listdir(BASE_DIR):
 
     file = open(os.path.join(BASE_DIR, filename))
     data = file.readlines()
-
+    dts = []
     for line in data:
         text = re.sub(r'[!;]', '.', line)
         text = re.sub(r'[:]', ',', text)
@@ -92,10 +92,11 @@ for filename in os.listdir(BASE_DIR):
         if len(emotions) > 0:
             continue
 
-        with open(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), 'a') as f:
-            for token, tag in replace(text):
-                f.write(f'{token}\t{tag}\n')
-            f.write('\n')
-            f.close()
-
-
+        for token, tag in replace(text):
+            dts.append(f'{token}\t{tag}')
+            dts.append('\n')
+        dts.append('\n')
+    dts = dts[:-2]
+    with open(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), 'a') as f:
+        f.writelines(dts)
+        f.close()
