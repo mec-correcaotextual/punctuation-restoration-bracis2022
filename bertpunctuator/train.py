@@ -7,18 +7,14 @@ Original file is located at
     https://colab.research.google.com/drive/191TmDhyzcrfzr77G3_-xe2zxcQVR8j8_
 """
 
-import argparse
 import os
 import pandas as pd
 import torch
 import wandb
 from simpletransformers.ner import NERModel
+import argparse
 
 parser = argparse.ArgumentParser(description='Process dataframe data.')
-
-parser.add_argument('--result_path',
-                    default='./results/',
-                    help='output filename')
 
 parser.add_argument('--path_to_data',
                     default='./data/',
@@ -42,7 +38,7 @@ dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(BASE_DIR, file
 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
 # Create a new run
-project = "bert-base-punct"
+project = "punctuation-restoration"
 # Connect an Artifact to the run
 model_name = args.bert_model
 
@@ -53,7 +49,7 @@ train_args = {
     'logging_steps': 10,
     'num_train_epochs': 12,
     'evaluate_during_training_steps': dataset['train'].shape[0],
-    'train_batch_size': 12,
+    'train_batch_size': 32,
     'eval_batch_size': 8,
     'overwrite_output_dir': True,
     'save_eval_checkpoints': False,
@@ -62,7 +58,7 @@ train_args = {
     'labels_list': dataset['train'].labels.unique().tolist(),
     'use_early_stopping': True,
     'wandb_project': project,
-    'wandb_kwargs': {'name': DATASET_NAME},
+    'wandb_kwargs': {'name': 'bert-base'},
 }
 
 model = NERModel(
@@ -77,7 +73,5 @@ result, model_outputs, wrong_preds = model.eval_model(dataset['test'])
 if not os.path.exists(args.result_path):
     os.makedirs(args.result_path)
 
-pd.DataFrame.from_dict(result, orient='index').T.to_csv(os.path.join(args.result_path,'overall_model_result.csv'),
+pd.DataFrame.from_dict(result, orient='index').T.to_csv(os.path.join(args.result_path, 'overall_model_result.csv'),
                                                         index=False, index_label=False)
-
-

@@ -1,13 +1,15 @@
 from gensim.models import KeyedVectors
+import argparse
 
+parser = argparse.ArgumentParser(description='Process dataframe data.')
 if __name__ == '__main__':
-    embeddings_txt_file = './embeddings/skip_s300.txt'
-    embeddings_bin_file = './embeddings/skip_s300.gensim'
+    parser.add_argument('--embeddings_txt_file', default='./embeddings/skip_s300.txt')
+    parser.add_argument('--embeddings_bin_file', default='./embeddings/skip_s300.gensim')
+    args = parser.parse_args()
 
     print('\nConverting TXT Embedding to Binary ...')
+    embeddings = KeyedVectors.load_word2vec_format(args.embeddings_txt_file, binary=False)
 
-    emb_vectors = KeyedVectors.load_word2vec_format(embeddings_txt_file, binary=False)
-
-    emb_vectors.save(embeddings_bin_file)
+    embeddings.save(args.embeddings_bin_file)
 
     print('\nProcess Completed ...')
