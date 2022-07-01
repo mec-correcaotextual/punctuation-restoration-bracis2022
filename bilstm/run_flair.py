@@ -88,7 +88,8 @@ if __name__ == '__main__':
     batch_size = 32
     project = "punctuation-restoration"
     with wandb.init(project=project) as run:
-        run.name = f'bilstm_{corpus_name}'
+        embedding_name = args.embeddings.split('/')[-1].split('.')[0]
+        run.name = f'bilstm_{embedding_name}'
         trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size, max_epochs=n_epochs)
 
     test_results_file = os.path.join(model_dir, 'test.tsv')
