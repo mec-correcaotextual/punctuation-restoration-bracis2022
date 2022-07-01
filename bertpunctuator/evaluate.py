@@ -107,6 +107,9 @@ for i in range(args.iters):
     ents_score.append(ents.T)
     scores_dts.append(pd.DataFrame.from_dict(scores, orient='index').T)
 
+if not os.path.exists(args.result_path):
+    os.makedirs(args.result_path)
+
 pd.concat(ents_score).to_csv(os.path.join(args.result_path, 'tst_ents_per_type.csv'), index=False, index_label=False)
 
 pd.concat(scores_dts).to_csv(os.path.join(args.result_path, 'tst_scores.csv'), index=False, index_label=False)
