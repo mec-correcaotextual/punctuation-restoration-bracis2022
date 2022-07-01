@@ -50,7 +50,7 @@ def replace(sentence):
     for token in tokens:
         try:
             if token not in ['.', ',', '?']:
-                sent_data.append([token, 'O'])
+                sent_data.append([token.replace(" ", ""), 'O'])
             elif token == '.':
                 sent_data[-1][1] = 'PERIOD'
 
