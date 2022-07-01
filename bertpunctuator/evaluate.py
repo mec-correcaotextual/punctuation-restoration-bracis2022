@@ -45,7 +45,7 @@ parser.add_argument('--iters',
 parser.add_argument('--result_path',
                     help='results path', default='./results/', type=str)
 
-parser.add_argument('--bert_model', default="neuralmind/bertpunctuator-base-portuguese-cased",
+parser.add_argument('--bert_model', default="./outputs/",
                     help='It must one of such models valid bertpunctuator model, see hugginface plataform or dir.')
 args = parser.parse_args()
 
