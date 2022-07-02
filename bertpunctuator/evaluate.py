@@ -49,67 +49,46 @@ parser.add_argument('--bert_model', default="./outputs/",
                     help='It must one of such models valid bertpunctuator model, see hugginface plataform or dir.')
 args = parser.parse_args()
 
-dataset = pd.read_csv(args.test_df).dropna()
 
-TEST_DATA = preprocess_data(dataset)
+def evaluate(model, dataset):
+    TEST_DATA = preprocess_data(dataset)
 
-model_args = NERArgs()
-model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
+    model_args = NERArgs()
+    model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
 
-path_to_model = args.bert_model
-model = NERModel(
-    "bert",
-    path_to_model,
-    args=model_args,
-    use_cuda=torch.cuda.is_available()
-)
+    y_true = []
+    texts = []
+    for _, group in dataset.groupby("sentence_id"):
+        text = " ".join(group.words)
+        texts.append(text)
+        y_true.append(group.labels.apply(lambda label: label.replace("I-", "")).tolist())
 
-y_true = []
-texts = []
-for _, group in dataset.groupby("sentence_id"):
-    text = " ".join(group.words)
-    texts.append(text)
-    y_true.append(group.labels.apply(lambda label: label.replace("I-", "")).tolist())
+    predictions = model.predict(texts)
 
-predictions = model.predict(texts)
+    y_pred = []
+    for i, pred in enumerate(predictions[0], 1):
+        y_pred.append(list(map(lambda item: list(item.values())[0].replace("I-", ""), pred)))
 
-y_pred = []
-for i, pred in enumerate(predictions[0], 1):
-    y_pred.append(list(map(lambda item: list(item.values())[0].replace("I-", ""), pred)))
+    predictions_ner = predictions[0]
 
-text = "Eu gostaria de ir para casa agora mas eu não sei como"
+    examples = []
+    for i, (text, entities) in enumerate(TEST_DATA):
+        doc = nlp(text)
+        doc.set_ents([Span(doc, i, i + 1, list(item.values())[0])
+                      for i, item in enumerate(predictions_ner[i])
+                      if list(item.values())[0] != "O"])
 
-predictions_ner = predictions[0]
-doc = nlp(texts[0])
-doc.set_ents([Span(doc, i, i + 1, "I-" + list(item.values())[0])
-              for i, item in enumerate(predictions_ner[0])
-              if list(item.values())[0] != "O"])
-ents = list(doc.ents)
+        example = Example.from_dict(doc, entities)
+        examples.append(example)
 
-examples = []
-for i, (text, entities) in enumerate(TEST_DATA):
-    doc = nlp(text)
-    doc.set_ents([Span(doc, i, i + 1, list(item.values())[0])
-                  for i, item in enumerate(predictions_ner[i])
-                  if list(item.values())[0] != "O"])
-
-    example = Example.from_dict(doc, entities)
-    examples.append(example)
-
-ents_score = []
-scores_dts = []
-for i in range(args.iters):
     scores = get_ner_prf(examples)
 
+    micro_avg = {
+        'f1-score': scores.pop('ents_f'),
+        'pprecision': scores.pop('ents_p'),
+        'recall': scores.pop('ents_r')
+    }
+
     ents_per_type = scores.pop('ents_per_type')
-    ents = pd.DataFrame.from_dict(ents_per_type, orient='index').loc[:, ['f']]
 
-    ents_score.append(ents.T)
-    scores_dts.append(pd.DataFrame.from_dict(scores, orient='index').T)
-
-if not os.path.exists(args.result_path):
-    os.makedirs(args.result_path)
-
-pd.concat(ents_score).to_csv(os.path.join(args.result_path, 'tst_ents_per_type.csv'), index=False, index_label=False)
-
-pd.concat(scores_dts).to_csv(os.path.join(args.result_path, 'tst_scores.csv'), index=False, index_label=False)
+    return micro_avg, ents_per_type

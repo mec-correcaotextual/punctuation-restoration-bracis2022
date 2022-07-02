@@ -14,6 +14,9 @@ import wandb
 from simpletransformers.ner import NERModel
 import argparse
 
+from bertpunctuator.evaluate import evaluate
+from bertpunctuator.preprocess import preprocess
+
 parser = argparse.ArgumentParser(description='Process dataframe data.')
 
 parser.add_argument('--path_to_data',
@@ -24,54 +27,126 @@ parser.add_argument('--dataset',
                     default='tedtalk2012',
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
+parser.add_argument('--split_data',
+                    action='store_true',
+                    default=False,
+                    help='Files must be a dataframe with headers sentence_id,words,label')
+
 parser.add_argument('--bert_model', default="neuralmind/bert-base-portuguese-cased",
                     help='It must one of such models valid bert model, see hugginface plataform.')
 
 args = parser.parse_args()
 
 DATASET_NAME = os.path.split(args.path_to_data)[-1]
-BASE_DIR = os.path.join(args.path_to_data, args.dataset)
-
-dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(BASE_DIR, filename)).dropna()
-           for filename in os.listdir(BASE_DIR)}
+BASE_DIR = '../texts/tedtalk2012/'
 
 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
-# Create a new run
-project = "punctuation-restoration"
-# Connect an Artifact to the run
-model_name = args.bert_model
 
-# Download model weights to a folder and return the path
-# model_dir = my_model_artifact.download()
-train_args = {
-    'evaluate_during_training': True,
-    'logging_steps': 10,
-    'num_train_epochs': 12,
-    'evaluate_during_training_steps': dataset['train'].shape[0],
-    'train_batch_size': 32,
-    'eval_batch_size': 8,
-    'overwrite_output_dir': True,
-    'save_eval_checkpoints': False,
-    'save_model_every_epoch': False,
-    'save_steps': -1,
-    'labels_list': dataset['train'].labels.unique().tolist(),
-    'use_early_stopping': True,
-    'wandb_project': project,
-    'wandb_kwargs': {'name': 'bert-base'},
-}
+if args.split_data:
+    print('\nSplitting data...')
+    results_ents, results_micro_avg = [], []
+    for folder in os.listdir(BASE_DIR):
+        if os.path.isdir(os.path.join(BASE_DIR, folder)):
+            dataset_path = os.path.join(BASE_DIR, folder)
+            out_path = os.path.join(args.path_to_data, folder)
+            os.makedirs(out_path, exist_ok=True)
+            preprocess(dataset_path, out_path)
 
-model = NERModel(
-    "bert",
-    model_name,
-    args=train_args,
-    use_cuda=torch.cuda.is_available()
-)
-model.train_model(dataset['train'], eval_data=dataset['dev'])
-result, model_outputs, wrong_preds = model.eval_model(dataset['test'])
+            dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(out_path, filename)).dropna()
+                       for filename in os.listdir(out_path)}
 
-if not os.path.exists(args.result_path):
-    os.makedirs(args.result_path)
+            # Create a new run
+            project = "punctuation-restoration"
+            # Connect an Artifact to the run
+            model_name = args.bert_model
 
-pd.DataFrame.from_dict(result, orient='index').T.to_csv(os.path.join(args.result_path, 'overall_model_result.csv'),
-                                                        index=False, index_label=False)
+            # Download model weights to a folder and return the path
+            # model_dir = my_model_artifact.download()
+            train_args = {
+                'evaluate_during_training': True,
+                'logging_steps': 10,
+                'num_train_epochs': 12,
+                'evaluate_during_training_steps': dataset['train'].shape[0],
+                'train_batch_size': 32,
+                'eval_batch_size': 8,
+                'overwrite_output_dir': True,
+                'save_eval_checkpoints': False,
+                'save_model_every_epoch': False,
+                'save_steps': -1,
+                'labels_list': dataset['train'].labels.unique().tolist(),
+                'use_early_stopping': True,
+                'wandb_project': project,
+                'wandb_kwargs': {'name': 'bert-base-'+folder},
+            }
+
+            model = NERModel(
+                "bert",
+                model_name,
+                args=train_args,
+                use_cuda=torch.cuda.is_available()
+            )
+            model.train_model(dataset['train'], eval_data=dataset['dev'])
+            model_name = './outputs/best_model/'
+            model = NERModel(
+                "bert",
+                model_name,
+                args=train_args,
+                use_cuda=torch.cuda.is_available()
+            )
+            micro_avg, ents = evaluate(model, dataset['test'])
+            micro_avg.update({'dataset_name': folder, 'classifier_name': 'bert-base'})
+            results_micro_avg.append(micro_avg)
+            results_ents.append(ents)
+
+    pd.DataFrame(results_micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
+    pd.DataFrame(results_ents).to_csv('./outputs/best_model/micro_avg_results.csv')
+
+else:
+
+    preprocess(BASE_DIR, args.path_to_data)
+
+    dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(args.path_to_data, filename)).dropna()
+               for filename in os.listdir(args.path_to_data)}
+
+    # Create a new run
+    project = "punctuation-restoration"
+    # Connect an Artifact to the run
+    model_name = args.bert_model
+
+    # Download model weights to a folder and return the path
+    # model_dir = my_model_artifact.download()
+    train_args = {
+        'evaluate_during_training': True,
+        'logging_steps': 10,
+        'num_train_epochs': 12,
+        'evaluate_during_training_steps': dataset['train'].shape[0],
+        'train_batch_size': 32,
+        'eval_batch_size': 8,
+        'overwrite_output_dir': True,
+        'save_eval_checkpoints': False,
+        'save_model_every_epoch': False,
+        'save_steps': -1,
+        'labels_list': dataset['train'].labels.unique().tolist(),
+        'use_early_stopping': True,
+        'wandb_project': project,
+        'wandb_kwargs': {'name': 'bert-base'},
+    }
+
+    model = NERModel(
+        "bert",
+        model_name,
+        args=train_args,
+        use_cuda=torch.cuda.is_available()
+    )
+    model.train_model(dataset['train'], eval_data=dataset['dev'])
+    model = NERModel(
+        "bert",
+        model_name,
+        args=train_args,
+        use_cuda=torch.cuda.is_available()
+    )
+    micro_avg, ents = evaluate(model, dataset['test'])
+    pd.DataFrame(micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
+
+    pd.DataFrame(ents).to_csv('./outputs/best_model/micro_avg_results.csv')

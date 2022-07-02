@@ -64,34 +64,36 @@ def replace(sent_id, sentence):
 
     return sent_data
 
-if not os.path.exists(PATH_TO_SAVE):
-    os.makedirs(PATH_TO_SAVE)
 
-for filename in os.listdir(BASE_DIR):
-    dataset2 = []
+def preprocess(base_dir, output_dir):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-    if filename.endswith(".train.txt"):
-        filetype = "train"
-    elif filename.endswith(".test.txt"):
-        filetype = "test"
-    elif filename.endswith(".dev.txt"):
-        filetype = "dev"
-    else:
-        filetype = "other"
+    for filename in os.listdir(base_dir):
+        dataset2 = []
 
-    file = open(os.path.join(BASE_DIR, filename))
-    data = file.readlines()
+        if filename.endswith("train.txt"):
+            filetype = "train"
+        elif filename.endswith("test.txt"):
+            filetype = "test"
+        elif filename.endswith("dev.txt"):
+            filetype = "dev"
+        else:
+            filetype = "other"
 
-    for i, line in enumerate(data):
-        text = re.sub(r'[!;]', '.', line)
-        text = re.sub(r'[:]', ',', text)
-        text = re.sub(r'\s[-]\s', ',', text).lower()
+        file = open(os.path.join(base_dir, filename))
+        data = file.readlines()
 
-        emotions = re.findall(r'\(\w+\)', text)
-        if len(emotions) > 0:
-            continue
+        for i, line in enumerate(data):
+            text = re.sub(r'[!;]', '.', line)
+            text = re.sub(r'[:]', ',', text)
+            text = re.sub(r'\s[-]\s', ',', text).lower()
 
-        dataset2.extend(replace(i, text))
+            emotions = re.findall(r'\(\w+\)', text)
+            if len(emotions) > 0:
+                continue
 
-    df = pd.DataFrame(np.array(dataset2), columns=['sentence_id', 'labels', 'words'])
-    df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False)
+            dataset2.extend(replace(i, text))
+
+        df = pd.DataFrame(np.array(dataset2), columns=['sentence_id', 'labels', 'words'])
+        df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False)
