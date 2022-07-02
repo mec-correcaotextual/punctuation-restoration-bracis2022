@@ -92,3 +92,9 @@ def evaluate(model, dataset):
     ents_per_type = scores.pop('ents_per_type')
 
     return micro_avg, ents_per_type
+
+
+if __name__ == '__main__':
+    model_args = NERArgs()
+    model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
+    evaluate(NERModel(args.bert_model, model_args), pd.read_csv(args.test_df))
