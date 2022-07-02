@@ -27,6 +27,11 @@ parser.add_argument('--dataset',
                     default='tedtalk2012',
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
+parser.add_argument('--n_epochs',
+                    default=12,
+                    help='Files must be a dataframe with headers sentence_id,words,label')
+
+
 parser.add_argument('--split_data',
                     action='store_true',
                     default=False,
@@ -66,7 +71,7 @@ if args.split_data:
             train_args = {
                 'evaluate_during_training': True,
                 'logging_steps': 10,
-                'num_train_epochs': 12,
+                'num_train_epochs': args.n_epochs,
                 'evaluate_during_training_steps': dataset['train'].shape[0],
                 'train_batch_size': 32,
                 'eval_batch_size': 8,
