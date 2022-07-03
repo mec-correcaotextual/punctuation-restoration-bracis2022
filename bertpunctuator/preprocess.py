@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 # parser.add_argument('--output_path',
 #                     help='Dir to save output files', default='./data/tedtalk2012/')
 
-args = parser.parse_args()
+# args = parser.parse_args()
 
 BASE_DIR = args.text_path
 PATH_TO_SAVE = args.output_path
