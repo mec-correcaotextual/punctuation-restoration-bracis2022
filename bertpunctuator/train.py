@@ -14,8 +14,8 @@ import wandb
 from simpletransformers.ner import NERModel
 import argparse
 
-from bertpunctuator.evaluate import evaluate
-from bertpunctuator.preprocess import preprocess
+import evaluate
+import preprocess
 
 parser = argparse.ArgumentParser(description='Process dataframe data.')
 
