@@ -152,6 +152,6 @@ else:
         use_cuda=torch.cuda.is_available()
     )
     micro_avg, ents = evaluate(model, dataset['test'])
-    pd.DataFrame(micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
+    pd.DataFrame.from_dict(micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
 
-    pd.DataFrame(ents).to_csv('./outputs/best_model/micro_avg_results.csv')
+    pd.DataFrame.from_dict(ents).to_csv('./outputs/best_model/micro_avg_results.csv')
