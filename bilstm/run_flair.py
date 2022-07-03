@@ -51,7 +51,7 @@ if __name__ == '__main__':
         model_dir += f'_{embedding_name}'
 
     elif embedding_name == 'bert':
-        bert_embedding = TransformerWordEmbeddings('neuralmind/bert-base-portuguese-cased')
+        bert_embedding = TransformerWordEmbeddings('neuralmind/bert-base-portuguese-cased', layers='-1')
         embedding_types.append(bert_embedding)
         model_dir += f'_{embedding_name}'
 
