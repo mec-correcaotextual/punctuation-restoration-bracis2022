@@ -1,6 +1,6 @@
 import os
 import wandb
-
+from flair.data import Sentence
 from flair.datasets import ColumnCorpus
 from flair.embeddings import WordEmbeddings, StackedEmbeddings, TransformerWordEmbeddings
 from flair.models import SequenceTagger
@@ -54,6 +54,9 @@ if __name__ == '__main__':
         bert_embedding = TransformerWordEmbeddings('neuralmind/bert-base-portuguese-cased', layers='-1', layer_mean=False)
         embedding_types.append(bert_embedding)
         model_dir += f'_{embedding_name}'
+        sentence = Sentence('The grass is green.')
+        embeddings.embed(sentence)
+        print(f'Embedding size: {sentence[0].embedding.size()}')
 
     embeddings = StackedEmbeddings(embeddings=embedding_types)
     if args.use_crf:
