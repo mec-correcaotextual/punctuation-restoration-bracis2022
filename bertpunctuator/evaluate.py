@@ -84,11 +84,11 @@ def evaluate(model, dataset):
     scores = get_ner_prf(examples)
 
     micro_avg = {
-        'micro_avg':{
-        'f1-score': scores.pop('ents_f'),
-        'precision': scores.pop('ents_p'),
-        'recall': scores.pop('ents_r')
-    }
+        'micro_avg': {
+            'f1-score': scores.pop('ents_f'),
+            'precision': scores.pop('ents_p'),
+            'recall': scores.pop('ents_r')
+        }
     }
 
     ents_per_type = scores.pop('ents_per_type')
