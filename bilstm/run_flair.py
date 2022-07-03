@@ -55,7 +55,7 @@ if __name__ == '__main__':
         embedding_types.append(bert_embedding)
         model_dir += f'_{embedding_name}'
         sentence = Sentence('The grass is green.')
-        embeddings.embed(sentence)
+        bert_embedding.embed(sentence)
         print(f'Embedding size: {sentence[0].embedding.size()}')
 
     embeddings = StackedEmbeddings(embeddings=embedding_types)
