@@ -2,7 +2,7 @@ import os
 import wandb
 
 from flair.datasets import ColumnCorpus
-from flair.embeddings import WordEmbeddings, StackedEmbeddings
+from flair.embeddings import WordEmbeddings, StackedEmbeddings, TransformerWordEmbeddings
 from flair.models import SequenceTagger
 from flair.trainers import ModelTrainer
 from flair.optim import SGDW
@@ -25,7 +25,7 @@ if __name__ == '__main__':
                         default='tedtalk2012',
                         help='Files must be a dataframe with headers sentence_id,words,label')
 
-    parser.add_argument('--embeddings', default='./embeddings/skip_s300.gensim',
+    parser.add_argument('--embeddings', default='skip_s300',
                         help='It must one of such models valid bert model, see hugginface plataform.')
 
     parser.add_argument('--use_crf', default=True, action='store_true')
@@ -37,24 +37,25 @@ if __name__ == '__main__':
     model_dir = './models/bilstm'
 
     embeddings = None
-    embedding_name = ''
-    if args.embeddings:
+    embedding_name = args.embeddings
+    embedding_types = []
+    if embedding_name == 'skip_s300':
 
         print(f'\nRunning using {args.embeddings}')
-        traditional_embedding = WordEmbeddings(args.embeddings)
-
-        # Loading Traditional Embeddings
-
-        # Loading Contextual Embeddings
-
-        embedding_types = []
+        traditional_embedding = WordEmbeddings('./embeddings/skip_s300.gensim')
 
         if traditional_embedding is not None:
             embedding_types.append(traditional_embedding)
-            embeddings = StackedEmbeddings(embeddings=embedding_types)
+
         embedding_name = args.embeddings.split('/')[-1].split('.')[0]
         model_dir += f'_{embedding_name}'
 
+    elif embedding_name == 'bert':
+        bert_embedding = TransformerWordEmbeddings('neuralmind/bert-base-portuguese-cased')
+        embedding_types.append(bert_embedding)
+        model_dir += f'_{embedding_name}'
+
+    embeddings = StackedEmbeddings(embeddings=embedding_types)
     if args.use_crf:
         model_dir += '_crf'
         print('\nRunning using CRF')
