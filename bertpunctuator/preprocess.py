@@ -6,13 +6,13 @@ from nltk.tokenize import regexp
 import argparse
 from sklearn.model_selection import train_test_split
 
-parser = argparse.ArgumentParser(description='Process dataframe data.')
-
-parser.add_argument('--text_path',
-                    help='input files', default='../texts/tedtalk2012/')
-
-parser.add_argument('--output_path',
-                    help='Dir to save output files', default='./data/tedtalk2012/')
+# parser = argparse.ArgumentParser(description='Process dataframe data.')
+#
+# parser.add_argument('--text_path',
+#                     help='input files', default='../texts/tedtalk2012/')
+#
+# parser.add_argument('--output_path',
+#                     help='Dir to save output files', default='./data/tedtalk2012/')
 
 args = parser.parse_args()
 
