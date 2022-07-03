@@ -104,6 +104,5 @@ if __name__ == '__main__':
         args=model_args,
         use_cuda=torch.cuda.is_available()
     ), pd.read_csv(args.test_df))
-    pd.DataFrame.from_dict(ents_per_type, orient='index').to_csv(os.path.join(args.result_path, "ents_per_type.csv"), index=False, index_label=False)
-    pd.DataFrame.from_dict(micro_avg, orient='index').to_csv(os.path.join(args.result_path, "micro_avg.csv"),
-                                                                 index=False)
+    pd.DataFrame.from_dict(ents_per_type, orient='index').to_csv(os.path.join(args.result_path, "ents_per_type.csv"))
+    pd.DataFrame.from_dict(micro_avg, orient='index').to_csv(os.path.join(args.result_path, "micro_avg.csv"))
