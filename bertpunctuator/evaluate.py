@@ -34,20 +34,6 @@ def preprocess_data(dataframe):
     return data
 
 
-parser = argparse.ArgumentParser(description='Process dataframe data.')
-
-parser.add_argument('--test_df',
-                    help='input files', default='./data/tedtalk2012/test.csv')
-
-parser.add_argument('--iters',
-                    help='Number of tests', default=10, type=int)
-
-parser.add_argument('--result_path',
-                    help='results path', default='./results/', type=str)
-
-parser.add_argument('--bert_model', default="./outputs/",
-                    help='It must one of such models valid bertpunctuator model, see hugginface plataform or dir.')
-args = parser.parse_args()
 
 
 def evaluate(model, dataset):
@@ -97,6 +83,21 @@ def evaluate(model, dataset):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Process dataframe data.')
+
+    parser.add_argument('--test_df',
+                        help='input files', default='./data/tedtalk2012/test.csv')
+
+    parser.add_argument('--iters',
+                        help='Number of tests', default=10, type=int)
+
+    parser.add_argument('--result_path',
+                        help='results path', default='./results/', type=str)
+
+    parser.add_argument('--bert_model', default="./outputs/",
+                        help='It must one of such models valid bertpunctuator model, see hugginface plataform or dir.')
+    args = parser.parse_args()
+
     model_args = NERArgs()
     model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
     os.makedirs(args.result_path, exist_ok=True)
