@@ -98,7 +98,12 @@ if __name__ == '__main__':
     model_args = NERArgs()
     model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
     os.makedirs(args.result_path, exist_ok=True)
-    micro_avg, ents_per_type = evaluate(NERModel(args.bert_model, model_args), pd.read_csv(args.test_df))
+    micro_avg, ents_per_type = evaluate(NERModel(
+        "bert",
+        args.bert_model,
+        args=model_args,
+        use_cuda=torch.cuda.is_available()
+    ), pd.read_csv(args.test_df))
     pd.DataFrame.from_dict(ents_per_type, orient='index').to_csv(os.path.join(args.result_path, "ents_per_type.csv"), index=False, index_label=False)
     pd.DataFrame.from_dict(micro_avg, orient='index').to_csv(os.path.join(args.result_path, "micro_avg.csv"),
                                                                  index=False)
