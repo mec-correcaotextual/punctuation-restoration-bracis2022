@@ -63,7 +63,7 @@ if args.k_fold_eval:
                        for filename in os.listdir(out_path)}
 
             # Create a new run
-            project = "punctuation-restoration"
+            project = "punctuation-restoration-kfold"
 
             # Download model weights to a folder and return the path
             # model_dir = my_model_artifact.download()
