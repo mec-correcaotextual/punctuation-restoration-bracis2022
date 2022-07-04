@@ -51,8 +51,9 @@ if args.k_fold_eval:
     print('\nSplitting data...')
     results_ents, results_micro_avg = [], []
     for folder in os.listdir(BASE_DIR):
-        print(f'\nRunning on {folder}')
+
         if os.path.isdir(os.path.join(BASE_DIR, folder)):
+            print(f'\nRunning on {folder}')
             dataset_path = os.path.join(BASE_DIR, folder)
             out_path = os.path.join(args.path_to_data, folder)
             os.makedirs(out_path, exist_ok=True)
