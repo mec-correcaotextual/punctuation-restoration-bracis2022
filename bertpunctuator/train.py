@@ -43,7 +43,7 @@ parser.add_argument('--bert_model', default="neuralmind/bert-base-portuguese-cas
 args = parser.parse_args()
 
 DATASET_NAME = os.path.split(args.path_to_data)[-1]
-BASE_DIR = '../texts/tedtalk2012/'
+BASE_DIR = f'../texts/{args.dataset}/'
 
 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
