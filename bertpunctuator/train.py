@@ -29,6 +29,7 @@ parser.add_argument('--dataset',
 
 parser.add_argument('--n_epochs',
                     default=12,
+                    type=int,
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
 parser.add_argument('--k_fold_eval',
