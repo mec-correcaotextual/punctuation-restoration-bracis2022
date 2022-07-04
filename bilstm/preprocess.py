@@ -6,18 +6,16 @@ from nltk.tokenize import regexp
 import argparse
 from sklearn.model_selection import train_test_split
 
-parser = argparse.ArgumentParser(description='Process dataframe data.')
 
-parser.add_argument('--text_path',
-                    help='input files', default='../texts/tedtalk2012/')
-
-parser.add_argument('--output_path',
-                    help='Dir to save output files', default='./data/tedtalk2012/')
-
-args = parser.parse_args()
-
-BASE_DIR = args.text_path
-PATH_TO_SAVE = args.output_path
+# parser = argparse.ArgumentParser(description='Process dataframe data.')
+#
+# parser.add_argument('--text_path',
+#                     help='input files', default='../texts/tedtalk2012/')
+#
+# parser.add_argument('--output_path',
+#                     help='Dir to save output files', default='./data/tedtalk2012/')
+#
+# args = parser.parse_args()
 
 
 def split_df(df_):
@@ -42,7 +40,7 @@ def replace(sentence):
     tokenizer = regexp.RegexpTokenizer(r'\w+|[.,?]')
 
     # we lowercasedthe entire corpus with the purpose of eliminating bias
-    # around the prediction ofperiods.
+    # around the prediction of periods.
     # Automatic punctuation restoration with BERT models #Nagy et. al
 
     tokens = tokenizer.tokenize(sentence.lower())
@@ -65,38 +63,31 @@ def replace(sentence):
     return sent_data
 
 
-if not os.path.exists(PATH_TO_SAVE):
-    os.makedirs(PATH_TO_SAVE)
+def preprocess(input_path, output_path):
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
 
-for filename in os.listdir(BASE_DIR):
-    dataset2 = []
+    for filename in os.listdir(input_path):
 
-    if filename.endswith(".train.txt"):
-        filetype = "train"
-    elif filename.endswith(".test.txt"):
-        filetype = "test"
-    elif filename.endswith(".dev.txt"):
-        filetype = "dev"
-    else:
-        filetype = "other"
+        filetype = filename.split('.')[-2]
 
-    file = open(os.path.join(BASE_DIR, filename))
-    data = file.readlines()
-    dts = []
-    for line in data:
-        text = re.sub(r'[!;]', '.', line)
-        text = re.sub(r'[:]', ',', text)
-        text = re.sub(r'\s[-]\s', ',', text).lower()
+        file = open(os.path.join(input_path, filename))
+        data = file.readlines()
+        dts = []
+        for line in data:
+            text = re.sub(r'[!;]', '.', line)
+            text = re.sub(r'[:]', ',', text)
+            text = re.sub(r'\s[-]\s', ',', text).lower()
 
-        emotions = re.findall(r'\(\w+\)', text)
-        if len(emotions) > 0:
-            continue
+            emotions = re.findall(r'\(\w+\)', text)
+            if len(emotions) > 0:
+                continue
 
-        for token, tag in replace(text):
-            dts.append(f'{token}\t{tag}')
+            for token, tag in replace(text):
+                dts.append(f'{token}\t{tag}')
+                dts.append('\n')
             dts.append('\n')
-        dts.append('\n')
-    dts = dts[:-2]
-    with open(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), 'a') as f:
-        f.writelines(dts)
-        f.close()
+        dts = dts[:-2]
+        with open(os.path.join(output_path, f'{filetype}.csv'), 'a') as f:
+            f.writelines(dts)
+            f.close()
