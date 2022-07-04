@@ -15,9 +15,9 @@ from sklearn.model_selection import train_test_split
 #                     help='Dir to save output files', default='./data/tedtalk2012/')
 
 # args = parser.parse_args()
-
-BASE_DIR = args.text_path
-PATH_TO_SAVE = args.output_path
+#
+# BASE_DIR = args.text_path
+# PATH_TO_SAVE = args.output_path
 
 
 def split_df(df_):
@@ -96,4 +96,4 @@ def preprocess(base_dir, output_dir):
             dataset2.extend(replace(i, text))
 
         df = pd.DataFrame(np.array(dataset2), columns=['sentence_id', 'labels', 'words'])
-        df.to_csv(os.path.join(PATH_TO_SAVE, f'{filetype}.csv'), index=False, index_label=False)
+        df.to_csv(os.path.join(output_dir, f'{filetype}.csv'), index=False, index_label=False)
