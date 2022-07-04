@@ -31,7 +31,7 @@ parser.add_argument('--n_epochs',
                     default=12,
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
-parser.add_argument('--split_data',
+parser.add_argument('--k_fold_eval',
                     action='store_true',
                     default=False,
                     help='Files must be a dataframe with headers sentence_id,words,label')
@@ -55,7 +55,7 @@ if args.split_data:
             dataset_path = os.path.join(BASE_DIR, folder)
             out_path = os.path.join(args.path_to_data, folder)
             os.makedirs(out_path, exist_ok=True)
-            preprocess(dataset_path, out_path)
+            preprocess(dataset_path, out_path) # preprocess dataset
 
             dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(out_path, filename)).dropna()
                        for filename in os.listdir(out_path)}
@@ -81,7 +81,7 @@ if args.split_data:
                 'wandb_project': project,
                 'wandb_kwargs': {'name': 'bert-base-' + folder},
             }
-
+            shutil.rmtree('./outputs/best_model/', ignore_errors=True)
             model = NERModel(
                 "bert",
                 args.bert_model,
@@ -104,17 +104,17 @@ if args.split_data:
             artifact = wandb.Artifact('bert-model', type='model')
             artifact.add_dir(model_name)
 
-            shutil.rmtree('./outputs/best_model/')
-
-    pd.DataFrame(results_micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
-    pd.DataFrame(results_ents).to_csv('./outputs/best_model/micro_avg_results.csv')
+    os.makedirs('./outputs/', exist_ok=True)
+    pd.DataFrame(results_micro_avg).to_csv('./outputs/micro_avg_results.csv')
+    pd.DataFrame(results_ents).to_csv('./outputs/micro_avg_results.csv')
 
 else:
 
     preprocess(BASE_DIR, args.path_to_data)
 
     dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(args.path_to_data, filename)).dropna()
-               for filename in os.listdir(args.path_to_data)}
+               for filename in os.listdir(args.path_to_data)
+               if os.path.isfile(os.path.join(args.path_to_data, filename))}
 
     # Create a new run
     project = "punctuation-restoration"
@@ -137,7 +137,7 @@ else:
         'labels_list': dataset['train'].labels.unique().tolist(),
         'use_early_stopping': True,
         'wandb_project': project,
-        'wandb_kwargs': {'name': 'bert-base'},
+        'wandb_kwargs': {'name': 'bert-base-all'},
     }
 
     model = NERModel(
@@ -155,5 +155,4 @@ else:
     )
     micro_avg, ents = evaluate(model, dataset['test'])
     pd.DataFrame.from_dict(micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
-
     pd.DataFrame.from_dict(ents).to_csv('./outputs/best_model/micro_avg_results.csv')
