@@ -109,7 +109,7 @@ if args.k_fold_eval:
             # saves the model
             artifact = wandb.Artifact('bert-model', type='model')
             artifact.add_dir(model_name)
-
+            break
     os.makedirs('./outputs/', exist_ok=True)
     pd.DataFrame(results_micro_avg).to_csv('./outputs/micro_avg_results.csv')
     pd.DataFrame(results_ents).to_csv('./outputs/micro_avg_ents_results.csv')
