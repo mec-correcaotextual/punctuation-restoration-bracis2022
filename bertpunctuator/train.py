@@ -124,7 +124,7 @@ else:
     # Create a new run
     project = "punctuation-restoration"
     # Connect an Artifact to the run
-    model_name = args.bert_model
+
 
     # Download model weights to a folder and return the path
     # model_dir = my_model_artifact.download()
@@ -147,11 +147,12 @@ else:
 
     model = NERModel(
         "bert",
-        model_name,
+        args.bert_model,
         args=train_args,
         use_cuda=torch.cuda.is_available()
     )
     model.train_model(dataset['train'], eval_data=dataset['dev'])
+    model_name = './outputs/best_model/'
     model = NERModel(
         "bert",
         model_name,
