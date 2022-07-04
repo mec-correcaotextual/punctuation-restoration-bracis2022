@@ -105,7 +105,7 @@ if args.k_fold_eval:
             micro_avg.update({'dataset_name': folder, 'classifier_name': 'bert-base'})
             results_micro_avg.append(micro_avg)
             results_ents.append(ents)
-
+            # saves the model
             artifact = wandb.Artifact('bert-model', type='model')
             artifact.add_dir(model_name)
 
