@@ -46,7 +46,7 @@ BASE_DIR = '../texts/tedtalk2012/'
 
 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
-if args.split_data:
+if args.k_fold_eval:
     print('\nSplitting data...')
     results_ents, results_micro_avg = [], []
     for folder in os.listdir(BASE_DIR):
