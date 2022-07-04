@@ -84,6 +84,7 @@ if args.k_fold_eval:
                 'wandb_kwargs': {'name': 'bert-base-' + folder},
             }
             shutil.rmtree('./outputs/best_model/', ignore_errors=True)
+            # Create a new NERModel
             model = NERModel(
                 "bert",
                 args.bert_model,
@@ -91,6 +92,8 @@ if args.k_fold_eval:
                 use_cuda=torch.cuda.is_available()
             )
             model.train_model(dataset['train'], eval_data=dataset['dev'])
+
+            # Evaluate the model
             model_name = './outputs/best_model/'
             model = NERModel(
                 "bert",
