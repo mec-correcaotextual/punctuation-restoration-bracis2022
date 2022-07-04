@@ -97,3 +97,7 @@ def preprocess(base_dir, output_dir):
 
         df = pd.DataFrame(np.array(dataset2), columns=['sentence_id', 'labels', 'words'])
         df.to_csv(os.path.join(output_dir, f'{filetype}.csv'), index=False, index_label=False)
+
+
+if __name__ == '__main__':
+    pass
