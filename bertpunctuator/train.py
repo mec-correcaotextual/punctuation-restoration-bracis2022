@@ -52,6 +52,7 @@ if True:
     print('\nSplitting data...')
     results_ents, results_micro_avg = [], []
     for folder in os.listdir(BASE_DIR):
+        print(f'\nRunning on {folder}')
         if os.path.isdir(os.path.join(BASE_DIR, folder)):
             dataset_path = os.path.join(BASE_DIR, folder)
             out_path = os.path.join(args.path_to_data, folder)
