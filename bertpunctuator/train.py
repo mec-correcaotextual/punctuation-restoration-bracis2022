@@ -83,7 +83,7 @@ if args.k_fold_eval:
                 'wandb_project': project,
                 'wandb_kwargs': {'name': 'bert-base-' + folder},
             }
-            shutil.rmtree('./outputs/best_model/', ignore_errors=True)
+            shutil.rmtree('./outputs/', ignore_errors=True)
             # Create a new NERModel
             model = NERModel(
                 "bert",
