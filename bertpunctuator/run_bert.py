@@ -112,7 +112,7 @@ if args.k_fold_eval:
 
     os.makedirs('./outputs/', exist_ok=True)
     pd.DataFrame(results_micro_avg).to_csv('./outputs/micro_avg_results.csv')
-    pd.DataFrame(results_ents).to_csv('./outputs/micro_avg_results.csv')
+    pd.DataFrame(results_ents).to_csv('./outputs/micro_avg_ents_results.csv')
 
 else:
 
