@@ -105,6 +105,9 @@ if args.split_data:
             results_micro_avg.append(micro_avg)
             results_ents.append(ents)
 
+            artifact = wandb.Artifact('bert-model', type='model')
+            artifact.add_dir(model_name)
+            os.rmdir(model_name)
     pd.DataFrame(results_micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
     pd.DataFrame(results_ents).to_csv('./outputs/best_model/micro_avg_results.csv')
 
