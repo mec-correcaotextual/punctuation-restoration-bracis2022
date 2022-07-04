@@ -13,7 +13,7 @@ import torch
 import wandb
 from simpletransformers.ner import NERModel
 import argparse
-
+import shutil
 from evaluate import evaluate
 from preprocess import preprocess
 
@@ -31,7 +31,6 @@ parser.add_argument('--n_epochs',
                     default=12,
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
-
 parser.add_argument('--split_data',
                     action='store_true',
                     default=False,
@@ -46,7 +45,6 @@ DATASET_NAME = os.path.split(args.path_to_data)[-1]
 BASE_DIR = '../texts/tedtalk2012/'
 
 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
-
 
 if args.split_data:
     print('\nSplitting data...')
@@ -64,8 +62,6 @@ if args.split_data:
 
             # Create a new run
             project = "punctuation-restoration"
-            # Connect an Artifact to the run
-            model_name = args.bert_model
 
             # Download model weights to a folder and return the path
             # model_dir = my_model_artifact.download()
@@ -83,12 +79,12 @@ if args.split_data:
                 'labels_list': dataset['train'].labels.unique().tolist(),
                 'use_early_stopping': True,
                 'wandb_project': project,
-                'wandb_kwargs': {'name': 'bert-base-'+folder},
+                'wandb_kwargs': {'name': 'bert-base-' + folder},
             }
 
             model = NERModel(
                 "bert",
-                model_name,
+                args.bert_model,
                 args=train_args,
                 use_cuda=torch.cuda.is_available()
             )
@@ -107,7 +103,9 @@ if args.split_data:
 
             artifact = wandb.Artifact('bert-model', type='model')
             artifact.add_dir(model_name)
-            os.rmdir(model_name)
+
+            shutil.rmtree('./outputs/best_model/')
+
     pd.DataFrame(results_micro_avg).to_csv('./outputs/best_model/micro_avg_results.csv')
     pd.DataFrame(results_ents).to_csv('./outputs/best_model/micro_avg_results.csv')
 
