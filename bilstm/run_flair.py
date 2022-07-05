@@ -102,7 +102,7 @@ def train(args):
                                   max_epochs=args.n_epochs)
 
                 test_results_file = os.path.join(model_dir, 'test.tsv')
-                new_test_file = os.path.join(model_dir, corpus_name + '_conlleval_test.tsv')
+                new_test_file = os.path.join(model_dir, '_conlleval_test.tsv')
                 generate_test_file(test_results_file, new_test_file)
                 micro_avg, per_ents = evaluate(corpus, os.path.join(model_dir, 'best-model.pt'))
                 results_micro_avg.append(micro_avg)
