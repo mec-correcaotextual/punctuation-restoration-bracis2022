@@ -85,14 +85,14 @@ if args.k_fold_eval:
             }
             print("\nCleaning up previous runs...")
             shutil.rmtree('./outputs/', ignore_errors=True)
-            # Create a new NERModel
-            model = NERModel(
-                "bert",
-                args.bert_model,
-                args=train_args,
-                use_cuda=torch.cuda.is_available()
-            )
-            model.train_model(dataset['train'], eval_data=dataset['dev'])
+            # # Create a new NERModel
+            # model = NERModel(
+            #     "bert",
+            #     args.bert_model,
+            #     args=train_args,
+            #     use_cuda=torch.cuda.is_available()
+            # )
+            # model.train_model(dataset['train'], eval_data=dataset['dev'])
             print("\nEvaluation model...")
             # Evaluate the model
             model_name = './outputs/best_model/'

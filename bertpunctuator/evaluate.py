@@ -56,7 +56,7 @@ def evaluate(model, dataset):
         y_pred.append(list(map(lambda item: list(item.values())[0].replace("I-", ""), pred)))
 
     predictions_ner = predictions[0]
-
+    print(predictions_ner)
     examples = []
     for i, (text, entities) in enumerate(TEST_DATA):
         doc = nlp(text)
@@ -67,15 +67,14 @@ def evaluate(model, dataset):
         example = Example.from_dict(doc, entities)
         examples.append(example)
 
+    print(examples[0])
     scores = get_ner_prf(examples)
-
+    print(scores)
     micro_avg = {
-        'micro_avg': {
             'f1-score': scores.pop('ents_f'),
             'precision': scores.pop('ents_p'),
             'recall': scores.pop('ents_r')
         }
-    }
 
     ents_per_type = scores.pop('ents_per_type')
 
