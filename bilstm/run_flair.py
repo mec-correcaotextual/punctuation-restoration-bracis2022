@@ -1,4 +1,6 @@
 import os
+import shutil
+
 import wandb
 from flair.data import Sentence
 from flair.datasets import ColumnCorpus
@@ -65,7 +67,12 @@ def train(args):
                 print(f'\nRunning on {folder}')
                 dataset_path = os.path.join(BASE_DIR, folder)
                 out_path = os.path.join(args.path_to_data, folder)
+
+                print('\nCleaning up previous runs...')
+                shutil.rmtree(model_dir, ignore_errors=True)
                 os.makedirs(out_path, exist_ok=True)
+
+                print(f'\nPreprocessing {dataset_path}')
                 preprocess(dataset_path, out_path)  # preprocess dataset
 
                 corpus = ColumnCorpus(out_path, columns)
@@ -86,13 +93,13 @@ def train(args):
 
                 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
-                n_epochs = 100
+
                 batch_size = 32
 
                 with wandb.init(project=project) as run:
                     run.name = f'bilstm_{embedding_name}'
                     trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size,
-                                  max_epochs=n_epochs)
+                                  max_epochs=args.n_epochs)
 
                 test_results_file = os.path.join(model_dir, 'test.tsv')
                 new_test_file = os.path.join(model_dir, corpus_name + '_conlleval_test.tsv')
