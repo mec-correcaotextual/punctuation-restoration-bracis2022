@@ -76,7 +76,8 @@ def train(args):
                 preprocess(dataset_path, out_path)  # preprocess dataset
 
                 corpus = ColumnCorpus(out_path, columns)
-
+                # filter empty sentences
+                corpus.filter_empty_sentences()
                 # Create a new run
                 project = "punctuation-restoration-kfold"
 
@@ -93,12 +94,12 @@ def train(args):
 
                 wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
-
                 batch_size = 32
 
                 with wandb.init(project=project) as run:
                     run.name = f'bilstm_{embedding_name}-{folder}'
-                    trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size,max_epochs=args.n_epochs)
+                    trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size,
+                                  max_epochs=args.n_epochs)
 
                 test_results_file = os.path.join(model_dir, 'test.tsv')
                 new_test_file = os.path.join(model_dir, '_conlleval_test.tsv')
@@ -136,7 +137,6 @@ def train(args):
         trainer = ModelTrainer(tagger, corpus)
 
         wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
-
 
         batch_size = 32
         project = "punctuation-restoration"
