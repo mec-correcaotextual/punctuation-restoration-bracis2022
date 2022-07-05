@@ -68,6 +68,7 @@ if args.k_fold_eval:
             # Download model weights to a folder and return the path
             # model_dir = my_model_artifact.download()
             train_args = {
+                "silent": None,
                 'evaluate_during_training': True,
                 'logging_steps': 10,
                 'num_train_epochs': args.n_epochs,
@@ -93,7 +94,7 @@ if args.k_fold_eval:
                 args=train_args,
                 use_cuda=torch.cuda.is_available()
             )
-            model.train_model(dataset['train'].sample(n=100), eval_data=dataset['dev'])
+            model.train_model(dataset['train'], eval_data=dataset['dev'])
             print("\nEvaluation model...")
             # Evaluate the model
             model_dir = './outputs/best_model/'
@@ -113,7 +114,7 @@ if args.k_fold_eval:
             # saves the model
             artifact = wandb.Artifact('bert-model', type='model')
             artifact.add_dir(model_dir)
-            break
+
     os.makedirs('./results/', exist_ok=True)
     pd.DataFrame(results_micro_avg).to_csv('./results/micro_avg_results.csv')
     pd.DataFrame(results_ents).to_csv('./results/micro_avg_ents_results.csv')
