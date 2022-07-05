@@ -88,17 +88,17 @@ if args.k_fold_eval:
             # # Create a new NERModel
             # model = NERModel(
             #     "bert",
-            #     args.bert_model,
-            #     args=train_args,
-            #     use_cuda=torch.cuda.is_available()
-            # )
+            #    args.bert_model,
+            #    args=train_args,
+            #      use_cuda=torch.cuda.is_available()
+            #  )
             # model.train_model(dataset['train'], eval_data=dataset['dev'])
             print("\nEvaluation model...")
             # Evaluate the model
             model_name = './outputs/best_model/'
             model = NERModel(
                 "bert",
-                model_name,
+                args.bert_model,
                 args=train_args,
                 use_cuda=torch.cuda.is_available()
             )
