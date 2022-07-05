@@ -97,6 +97,8 @@ if args.k_fold_eval:
             print("\nEvaluation model...")
             # Evaluate the model
             model_dir = './outputs/best_model/'
+
+            train_args.update({'labels_list': ["O", "COMMA", "PERIOD", "QUESTION"]})
             model = NERModel(
                 "bert",
                 model_dir,
