@@ -29,12 +29,12 @@ def run(args):
                 dataset_path = os.path.join(BASE_DIR, folder)
                 out_path = os.path.join(args.path_to_data, folder)
                 print(f'\nPreprocessing {dataset_path}')
-
+                preprocess(dataset_path, out_path)  # preprocess dataset
                 report_dir = f'./results/{corpus_name}/{folder}'
                 os.makedirs(report_dir, exist_ok=True)
-                preprocess(BASE_DIR, args.path_to_data)
-                train_file = os.path.join(dataset_path, 'train.csv')
-                test_file = os.path.join(dataset_path, 'test.csv')
+                preprocess(dataset_path, args.path_to_data)
+                train_file = os.path.join(out_path, 'train.csv')
+                test_file = os.path.join(out_path, 'test.csv')
 
                 report_file = os.path.join(report_dir, corpus_name + '_crf.csv')
 
