@@ -11,7 +11,7 @@ import os
 import pandas as pd
 import torch
 import wandb
-from simpletransformers.ner import NERModel
+from simpletransformers.ner import NERModel, NERArgs
 import argparse
 import shutil
 from evaluate import evaluate
@@ -98,11 +98,12 @@ if args.k_fold_eval:
             # Evaluate the model
             model_dir = './outputs/best_model/'
 
-            train_args.update({'labels_list': ["O", "COMMA", "PERIOD", "QUESTION"]})
+            eval_args = NERArgs()
+            eval_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
             model = NERModel(
                 "bert",
                 model_dir,
-                args=train_args,
+                args=eval_args,
                 use_cuda=torch.cuda.is_available()
             )
             micro_avg, ents = evaluate(model, dataset['test'])
