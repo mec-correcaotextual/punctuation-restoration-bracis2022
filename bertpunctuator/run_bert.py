@@ -93,7 +93,7 @@ if args.k_fold_eval:
                 args=train_args,
                 use_cuda=torch.cuda.is_available()
             )
-            # model.train_model(dataset['train'], eval_data=dataset['dev'])
+            model.train_model(dataset['train'], eval_data=dataset['dev'])
             print("\nEvaluation model...")
             # Evaluate the model
             model_dir = './outputs/best_model/'
