@@ -8,8 +8,8 @@ from flair.trainers import ModelTrainer
 from flair.optim import SGDW
 import pandas as pd
 
-from bilstm.evaluate import evaluate
-from bilstm.preprocess import preprocess
+from evaluate import evaluate
+from preprocess import preprocess
 from utils import generate_test_file
 import argparse
 
