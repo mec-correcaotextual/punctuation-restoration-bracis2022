@@ -34,26 +34,23 @@ def preprocess_data(dataframe):
     return data
 
 
-
-
 def evaluate(model, dataset):
     TEST_DATA = preprocess_data(dataset)
 
-    model_args = NERArgs()
-    model_args.labels_list = ["O", "COMMA", "PERIOD", "QUESTION"]
+
 
     y_true = []
     texts = []
     for _, group in dataset.groupby("sentence_id"):
         text = " ".join(group.words)
         texts.append(text)
-        y_true.append(group.labels.apply(lambda label: label.replace("I-", "")).tolist())
+        y_true.append(group.labels.apply(lambda label: label).tolist())
 
     predictions = model.predict(texts)
 
     y_pred = []
     for i, pred in enumerate(predictions[0], 1):
-        y_pred.append(list(map(lambda item: list(item.values())[0].replace("I-", ""), pred)))
+        y_pred.append(list(map(lambda item: list(item.values())[0], pred)))
 
     predictions_ner = predictions[0]
     print(predictions_ner)
@@ -71,10 +68,10 @@ def evaluate(model, dataset):
     scores = get_ner_prf(examples)
     print(scores)
     micro_avg = {
-            'f1-score': scores.pop('ents_f'),
-            'precision': scores.pop('ents_p'),
-            'recall': scores.pop('ents_r')
-        }
+        'f1-score': scores.pop('ents_f'),
+        'precision': scores.pop('ents_p'),
+        'recall': scores.pop('ents_r')
+    }
 
     ents_per_type = scores.pop('ents_per_type')
 
