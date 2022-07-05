@@ -57,7 +57,7 @@ if args.k_fold_eval:
             dataset_path = os.path.join(BASE_DIR, folder)
             out_path = os.path.join(args.path_to_data, folder)
             os.makedirs(out_path, exist_ok=True)
-            preprocess(dataset_path, out_path) # preprocess dataset
+            preprocess(dataset_path, out_path)  # preprocess dataset
 
             dataset = {filename.replace('.csv', ''): pd.read_csv(os.path.join(out_path, filename)).dropna()
                        for filename in os.listdir(out_path)}
@@ -86,19 +86,19 @@ if args.k_fold_eval:
             print("\nCleaning up previous runs...")
             shutil.rmtree('./outputs/', ignore_errors=True)
             # # Create a new NERModel
-            # model = NERModel(
-            #     "bert",
-            #    args.bert_model,
-            #    args=train_args,
-            #      use_cuda=torch.cuda.is_available()
-            #  )
-            # model.train_model(dataset['train'], eval_data=dataset['dev'])
-            print("\nEvaluation model...")
-            # Evaluate the model
-            model_name = './outputs/best_model/'
             model = NERModel(
                 "bert",
                 args.bert_model,
+                args=train_args,
+                use_cuda=torch.cuda.is_available()
+            )
+            # model.train_model(dataset['train'], eval_data=dataset['dev'])
+            print("\nEvaluation model...")
+            # Evaluate the model
+            model_dir = './outputs/best_model/'
+            model = NERModel(
+                "bert",
+                model_dir,
                 args=train_args,
                 use_cuda=torch.cuda.is_available()
             )
@@ -108,11 +108,11 @@ if args.k_fold_eval:
             results_ents.append(ents)
             # saves the model
             artifact = wandb.Artifact('bert-model', type='model')
-            artifact.add_dir(model_name)
+            artifact.add_dir(model_dir)
             break
-    os.makedirs('./outputs/', exist_ok=True)
-    pd.DataFrame(results_micro_avg).to_csv('./outputs/micro_avg_results.csv')
-    pd.DataFrame(results_ents).to_csv('./outputs/micro_avg_ents_results.csv')
+    os.makedirs('./results/', exist_ok=True)
+    pd.DataFrame(results_micro_avg).to_csv('./results/micro_avg_results.csv')
+    pd.DataFrame(results_ents).to_csv('./results/micro_avg_ents_results.csv')
 
 else:
 
@@ -125,7 +125,6 @@ else:
     # Create a new run
     project = "punctuation-restoration"
     # Connect an Artifact to the run
-
 
     # Download model weights to a folder and return the path
     # model_dir = my_model_artifact.download()
