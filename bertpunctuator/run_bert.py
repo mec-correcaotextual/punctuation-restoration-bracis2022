@@ -86,6 +86,7 @@ if args.k_fold_eval:
             print("\nCleaning up previous runs...")
             shutil.rmtree('./outputs/', ignore_errors=True)
             # # Create a new NERModel
+            print("\nTraining model...")
             model = NERModel(
                 "bert",
                 args.bert_model,
