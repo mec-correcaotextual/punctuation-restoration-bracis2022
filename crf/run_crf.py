@@ -73,7 +73,7 @@ def run(args):
                 dict_report = classification_report(y_test, y_pred, output_dict=True)
 
                 micro_avg = dict_report.pop('micro avg')
-                micro_avg.update({'dataset_name': folder, 'classifier_name': 'bi-lstm'})
+                micro_avg.update({'dataset_name': folder, 'classifier_name': 'crf'})
                 results_micro_avg.append(micro_avg)
 
                 dict_report.pop('macro avg')
