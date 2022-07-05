@@ -18,7 +18,8 @@ def run(args):
     # corpus_name = 'obras'
     corpus_name = 'tedtalk2012'
 
-    report_dir = f'./{corpus_name}'
+    report_dir = f'./results/{corpus_name}'
+    os.makedirs(report_dir, exist_ok=True)
 
     preprocess(BASE_DIR, args.path_to_data)
     train_file = os.path.join(args.path_to_data, 'train.csv')
