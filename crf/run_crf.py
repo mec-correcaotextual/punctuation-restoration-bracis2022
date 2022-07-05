@@ -100,7 +100,9 @@ def run(args):
 
                 with open(script_result_file, 'w', encoding='utf-8') as file:
                     file.write(data_conll)
-
+        os.makedirs('./results/', exist_ok=True)
+        pd.DataFrame(results_micro_avg).to_csv('./results/micro_avg_results.csv')
+        pd.DataFrame(results_ents).to_csv('./results/micro_avg_ents_results.csv')
     else:
 
         report_dir = f'./results/{corpus_name}'
