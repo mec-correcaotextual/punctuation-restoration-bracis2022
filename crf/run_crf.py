@@ -3,19 +3,26 @@ import numpy as np
 
 from sklearn_crfsuite import CRF
 from seqeval.metrics import classification_report
+
+from preprocess import preprocess
 from utils import read_corpus_file, data_preprocessing, convert_data, dump_report
 import pandas as pd
+import argparse
+
+parser = argparse.ArgumentParser(description='Process dataframe data.')
+
+BASE_DIR = '../texts/tedtalk2012/'
 
 
-if __name__ == '__main__':
-
+def run(args):
     # corpus_name = 'obras'
     corpus_name = 'tedtalk2012'
 
     report_dir = f'./{corpus_name}'
 
-    train_file = f'./train.csv'
-    test_file = f'./test.csv'
+    preprocess(BASE_DIR, args.path_to_data)
+    train_file = os.path.join(args.path_to_data, 'train.csv')
+    test_file = os.path.join(args.path_to_data, 'test.csv')
 
     report_file = os.path.join(report_dir, corpus_name + '_crf.csv')
 
@@ -39,7 +46,7 @@ if __name__ == '__main__':
 
     X_train, y_train = convert_data(train_data)
     X_test, y_test = convert_data(test_data)
-    pd.DataFrame.from_dict( X_train[0]).T.to_csv(f'{corpus_name}_X_train.csv', index=False)
+    pd.DataFrame.from_dict(X_train[0]).T.to_csv(f'{corpus_name}_X_train.csv', index=False)
     print('\nExample features:', X_train[0])
     print('Tags:', y_train[0])
 
@@ -72,3 +79,25 @@ if __name__ == '__main__':
 
     with open(script_result_file, 'w', encoding='utf-8') as file:
         file.write(data_conll)
+
+
+if __name__ == '__main__':
+    parser.add_argument('--result_path',
+                        default='./results/',
+                        help='output filename')
+
+    parser.add_argument('--path_to_data',
+                        default='./data/tedtalk2012',
+                        help='Files must be a dataframe with headers sentence_id,words,label')
+
+    parser.add_argument('--dataset',
+                        default='tedtalk2012',
+                        help='Files must be a dataframe with headers sentence_id,words,label')
+
+    parser.add_argument('--k_fold_eval',
+                        action='store_true',
+                        default=False,
+                        help='Files must be a dataframe with headers sentence_id,words,label')
+
+    args = parser.parse_args()
+    run(args)
