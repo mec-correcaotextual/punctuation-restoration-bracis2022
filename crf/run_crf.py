@@ -4,6 +4,8 @@ import numpy as np
 from sklearn_crfsuite import CRF
 from seqeval.metrics import classification_report
 from utils import read_corpus_file, data_preprocessing, convert_data, dump_report
+import pandas as pd
+
 
 if __name__ == '__main__':
 
@@ -37,7 +39,7 @@ if __name__ == '__main__':
 
     X_train, y_train = convert_data(train_data)
     X_test, y_test = convert_data(test_data)
-
+    pd.DataFrame.from_dict( X_train[0]).T.to_csv(f'{corpus_name}_X_train.csv', index=False)
     print('\nExample features:', X_train[0])
     print('Tags:', y_train[0])
 
