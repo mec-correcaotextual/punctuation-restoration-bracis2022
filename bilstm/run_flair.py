@@ -130,13 +130,16 @@ def train(args):
 
         wandb.login(key='8e593ae9d0788bae2e0a84d07de0e76f5cf3dcf4')
 
-        n_epochs = 100
+
         batch_size = 32
         project = "punctuation-restoration"
         with wandb.init(project=project) as run:
 
             run.name = f'bilstm_{embedding_name}'
-            trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size, max_epochs=n_epochs)
+            trainer.train(model_dir, optimizer=SGDW,
+                          learning_rate=0.1,
+                          mini_batch_size=batch_size,
+                          max_epochs=args.n_epochs)
 
         test_results_file = os.path.join(model_dir, 'test.tsv')
         new_test_file = os.path.join(model_dir, corpus_name + '_conlleval_test.tsv')
