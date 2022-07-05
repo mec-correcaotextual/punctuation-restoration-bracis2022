@@ -97,7 +97,7 @@ def train(args):
                 batch_size = 32
 
                 with wandb.init(project=project) as run:
-                    run.name = f'bilstm_{embedding_name}'
+                    run.name = f'bilstm_{embedding_name}-{folder}'
                     trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size,max_epochs=args.n_epochs)
 
                 test_results_file = os.path.join(model_dir, 'test.tsv')
