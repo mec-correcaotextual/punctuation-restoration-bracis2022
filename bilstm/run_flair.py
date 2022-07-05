@@ -98,8 +98,7 @@ def train(args):
 
                 with wandb.init(project=project) as run:
                     run.name = f'bilstm_{embedding_name}'
-                    trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size,
-                                  max_epochs=args.n_epochs)
+                    trainer.train(model_dir, optimizer=SGDW, learning_rate=0.1, mini_batch_size=batch_size,max_epochs=args.n_epochs)
 
                 test_results_file = os.path.join(model_dir, 'test.tsv')
                 new_test_file = os.path.join(model_dir, '_conlleval_test.tsv')
