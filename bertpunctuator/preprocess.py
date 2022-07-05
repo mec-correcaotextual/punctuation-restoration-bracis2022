@@ -72,7 +72,14 @@ def preprocess(base_dir, output_dir):
     for filename in os.listdir(base_dir):
         dataset2 = []
 
-        filetype = filename.split('.')[-2]
+        if filename.endswith("train.txt"):
+            filetype = "train"
+        elif filename.endswith("test.txt"):
+            filetype = "test"
+        elif filename.endswith("dev.txt"):
+            filetype = "dev"
+        else:
+            filetype = "other"
 
         if not os.path.isfile(os.path.join(base_dir, filename)):
             continue
