@@ -78,7 +78,7 @@ if args.k_fold_eval:
                 'save_eval_checkpoints': False,
                 'save_model_every_epoch': False,
                 'save_steps': -1,
-                'labels_list': dataset['train'].labels.unique().tolist(),
+                'labels_list': ["O", "COMMA", "PERIOD", "QUESTION"],
                 'use_early_stopping': True,
                 'wandb_project': project,
                 'wandb_kwargs': {'name': 'bert-base-' + folder},
