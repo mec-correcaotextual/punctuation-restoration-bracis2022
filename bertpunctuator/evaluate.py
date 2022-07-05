@@ -44,13 +44,13 @@ def evaluate(model, dataset):
     for _, group in dataset.groupby("sentence_id"):
         text = " ".join(group.words)
         texts.append(text)
-        y_true.append(group.labels.apply(lambda label: label.replace("I-", "")).tolist())
+        y_true.append(group.labels.apply(lambda label: label).tolist())
 
     predictions = model.predict(texts)
 
     y_pred = []
     for i, pred in enumerate(predictions[0], 1):
-        y_pred.append(list(map(lambda item: list(item.values())[0].replace("I-", ""), pred)))
+        y_pred.append(list(map(lambda item: list(item.values())[0], pred)))
 
     predictions_ner = predictions[0]
     print(predictions_ner)
