@@ -104,6 +104,7 @@ def train(args):
                 new_test_file = os.path.join(model_dir, '_conlleval_test.tsv')
                 generate_test_file(test_results_file, new_test_file)
                 micro_avg, per_ents = evaluate(corpus, os.path.join(model_dir, 'best-model.pt'))
+                micro_avg.update({'dataset_name': folder, 'classifier_name': 'bi-lstm'})
                 results_micro_avg.append(micro_avg)
                 results_ents.append(per_ents)
 
