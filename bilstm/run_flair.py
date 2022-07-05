@@ -76,8 +76,8 @@ def train(args):
                 preprocess(dataset_path, out_path)  # preprocess dataset
 
                 corpus = ColumnCorpus(out_path, columns)
-                # filter empty sentences
-                corpus.filter_empty_sentences()
+                # # filter empty sentences
+                # corpus.filter_empty_sentences()
                 # Create a new run
                 project = "punctuation-restoration-kfold"
 
