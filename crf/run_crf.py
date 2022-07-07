@@ -22,7 +22,7 @@ def run(args):
 
         print('\nRunning k-fold evaluation...')
         results_ents, results_micro_avg = [], []
-        for folder in os.listdir(BASE_DIR):
+        for folder in sorted(os.listdir(BASE_DIR)):
 
             if os.path.isdir(os.path.join(BASE_DIR, folder)):
                 print(f'\nRunning on {folder}')
@@ -77,11 +77,7 @@ def run(args):
                 micro_avg.pop('support')
                 results_micro_avg.append(micro_avg)
 
-                dict_report.pop('macro avg')
-                dict_report.pop('weighted avg')
-                dict_report.update({'dataset_name': folder, 'classifier_name': 'crf'})
 
-                results_ents.append(pd.DataFrame(dict_report))
 
                 data_conll = ''
 
@@ -102,6 +98,12 @@ def run(args):
 
                 with open(script_result_file, 'w', encoding='utf-8') as file:
                     file.write(data_conll)
+
+                dict_report.pop('macro avg')
+                dict_report.pop('weighted avg')
+                dict_report.update({'dataset_name': folder, 'classifier_name': 'crf'})
+
+                results_ents.append(pd.DataFrame(dict_report))
         os.makedirs('./results/', exist_ok=True)
         pd.DataFrame(results_micro_avg).to_csv('./results/micro_avg_results.csv')
         pd.concat(results_ents).to_csv('./results/micro_avg_ents_results.csv')

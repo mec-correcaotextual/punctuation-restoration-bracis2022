@@ -61,7 +61,7 @@ def train(args):
     if args.k_fold_eval:
         print('\nRunning k-fold evaluation...')
         results_ents, results_micro_avg = [], []
-        for folder in os.listdir(BASE_DIR):
+        for folder in sorted(os.listdir(BASE_DIR)):
 
             if os.path.isdir(os.path.join(BASE_DIR, folder)):
                 print(f'\nRunning on {folder}')
