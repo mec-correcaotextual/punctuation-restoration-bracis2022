@@ -176,95 +176,6 @@ superpostas a uma imagem geoespacial da NASA.
 Agora, vamos apresentar outra coisa.
 Isto está vindo direto da Internet; você pode conferir lá agora.
 Este é um projeto chamado Photosynth, que realmente casa duas tecnologias diferentes.
-Uma é a do Seadragon e a outra é uma linda pesquisa de processamento de imagens por computador feita por Noah Snavely, estudante da Universidade de Washington, orientado por Steve Seitz, da U.W.
-e Rick Szeliski, da Microsoft Research. Um belo trabalho em equipe.
-E isto está disponível na Internet. Através do Seadragon.
-Você pode ver que, quando fazemos essas visualizações, podemos mergulhar através das imagens e experimentar esse ambiente de resolução múltipla.
-Mas a disposição espacial das imagens aqui é realmente significativa.
-Os algoritmos de processamento de imagem registraram essas imagens juntas, de forma a corresponderem ao espaço real onde estas fotos -- todas tiradas perto dos Lagos Grassi, nas Montanhas Rochosas Canadenses -- foram tiradas. Então você vê elementos aqui de "slideshow" estabilizado, ou imagens panorâmicas, e tudo isso estava relacionado espacialmente.
-Não sei se vou ter tempo de mostrar outras paisagens.
-Há algumas bem mais amplas.
-Gostaria de passar direto para um dos conjuntos de dados originais do Noah -- e este é de um protótipo anterior do Photosynth com o qual começamos a trabalhar no verão -- para mostrar o que eu acho que é realmente o principal por trás dessa tecnologia, a tecnologia Photosynth. Algo que não é necessariamente tão visível quando observamos as cenas que estão no website.
-Tivemos que tomar cuidado com advogados, e coisas assim.
-Esta é uma reconstrução da Catedral de Notre Dame que foi feita inteiramente por computador através de imagens encontradas no Flickr. Se digitar "Notre Dame" no Flickr, aparecem fotos de gente com camiseta da faculdade Notre Dame, do campus, e por aí vai. E cada um desses cones laranja representa uma imagem que descobrimos pertencer a este modelo.
-Portanto, estas são todas imagens do Flickr, e foram todas espacialmente relacionadas, como podem ver.
-E podemos navegar por elas dessa forma muito simples.
-Sabem, eu nunca pensei que um dia ia trabalhar na Microsoft.
-É muito gratificante ter esse tipo de recepção aqui.
-Acho que podem notar que isso tudo vem de diversos tipos de câmeras: desde câmeras de celulares às SLR profissionais, cedendo grande número de fotos, alinhavadas nesse ambiente.
-E se eu conseguir, vou encontrar algumas esquisitas.
-Muitas estão obstruídas por rostos, e coisas assim.
-Em algum lugar aqui há uma série de fotos -- aqui está.
-Isso, na verdade, era só um cartaz de Notre Dame, mas a câmera pegou muito bem.
-Podemos mergulhar no cartaz, para obtermos uma visão detalhada deste ambiente.
-A idéia aqui é que podemos fazer coisas com o ambiente social. Estamos pegando dados de todos -- de toda a memória coletiva sobre como é a Terra, visualmente -- e conectando tudo.
-Todas essas fotos são conectadas, e fazem emergir algo que é maior do que a soma das partes.
-Produz-se um modelo de toda a Terra.
-Pensem nisso como uma extensão do trabalho de Stephen Lawler, Virtual Earth.
-E isto é algo que cresce em complexidade conforme as pessoas o utilizam, e cujos benefícios aumentam para os usuários conforme o utilizam.
-Suas próprias fotos estão sendo identificadas via "tags meta-data" que outra pessoa inseriu.
-Se alguém tiver a paciência de preencher "tags" para identificar cada um desses santos e dizer quem são, então a minha foto da Catedral de Notre Dame repentinamente torna-se enriquecida com toda essa informação, e eu posso usar isso como um ponto de entrada para mergulhar naquele espaço, naquele mundo virtual, usando as fotos de todos, e viver um tipo de experiência social interligando modos e usuários.
-E, obviamente, um subproduto de tudo aquilo são os modelos virtuais imensamente ricos de cada parte interessante da Terra, obtidos não somente por fotos aéreas, de satélites e coisas assim, mas pela memória coletiva.
-Muito obrigado.
-Chris Anderson: Eu entendi isso direito? Que o seu software vai permitir, em algum momento, na verdade dentro de alguns anos, que todas as fotos compartilhadas por qualquer pessoa em todo o mundo sejam, basicamente, conectadas?
-BAA: Sim. O que isto realmente faz é descobri-las.
-Criar "links", por assim dizer, entre imagens.
-E fazer isso com base no conteúdo das imagens.
-E isto fica empolgante quando você pensa na riqueza da informação semântica que muitas dessas imagens têm.
-Como quando você faz uma busca na Internet por imagens, você digita uma frase, e esse texto na página web carrega muitas informações sobre o que é aquela foto.
-Bem, e se aquela foto estiver conectada a todas as suas fotos?
-Então, a interconexão semântica e a riqueza de detalhes que virá disso será realmente imensa. É um efeito clássico de rede.
-CA: Blaise, isso é incrível. Parabéns.
-BAA: Muito obrigado.
-Vou comentar algumas coisas do meu livro que eu espero reforçarão outras coisas que vocês já ouviram, fazendo algumas conexões, caso passem despercebidas.
-Quero começar com o que eu chamo de "dogma oficial".
-O dogma oficial do quê?
-O dogma oficial das sociedades industriais ocidentais.
-E o dogma oficial diz o seguinte: se quisermos maximizar o bem-estar dos nossos cidadãos, o caminho é maximizar as liberdades individuais.
-A razão para isso é que a liberdade é inerentemente boa, valiosa, compensadora, essencial para sermos humanos.
-E porque se as pessoas tiverem liberdade, então cada um de nós pode agir por conta própria e fazer aquilo que maximiza nosso bem-estar, e ninguém tem que decidir por nós.
-O jeito de maximizar a liberdade é maximizar as opções de escolha.
-Quanto mais escolhas as pessoas têm, mais liberdade elas têm, e quanto mais liberdade elas têm, maior o bem estar-bem.
-Eu acho que isso está tão incorporado na sociedade que ninguém pensa em questionar.
-Está também profundamente incorporado nas nossas vidas.
-Alguns exemplos do que o progresso moderno tornou possível.
-Esse é o meu supermercado. Não é muito grande.
-Só uma palavra sobre molhos para salada.
-175 molhos de salada no meu supermercado, sem contar os 10 tipos de azeite de oliva extra-virgem e os 12 vinagres balsâmicos disponíveis para você fazer uma grande variedade de seus próprios molhos, caso nenhum dos 175 que a loja oferece seja do seu gosto.
-O supermercado é desse jeito.
-E então você vai até a loja de eletrônicos para comprar um aparelho de som -- caixas, CD player, cassete, rádio, amplificador. Nessa loja de eletrônicos sozinha, existe esse número de aparelhos de som.
-Nós podemos montar 6,5 milhões de aparelhos de som diferentes usando os componentes oferecidos em uma loja.
-Você tem que admitir que são muitas escolhas.
-Em outras áreas -- o mundo das comunicações.
-Existia um tempo, quando eu era menino, que você podia ter o tipo de telefone que quisesse, contanto que fosse da Ma Bell.
-Você alugava o telefone. Não comprava.
-Uma consequência disso, por sinal, é que o telefone nunca quebrava.
-Esses dias acabaram.
-Agora nós temos uma variedade quase ilimitada de telefones, especialmente no mundo dos celulares.
-Esses são os celulares do futuro.
-Meu favorito é o do meio -- MP3 player, aparador de pelos e maçarico para creme brûlée.
-E caso você não tenha visto esse modelo nas lojas, pode dormir sossegado que um dia verá.
-Isso faz com que as pessoas entrem nas lojas fazendo essa pergunta.
-E sabe qual é a resposta para essa pergunta?
-A resposta é "Não."
-Não é possível comprar um celular que não faça muita coisa.
-Em outros aspectos da vida muito mais importantes que o consumo, acontece a mesma explosão de escolhas.
-Saúde -- não ocorre mais nos EUA de você ir ao médico, e o médico dizer o que fazer.
-Em vez disso, você vai ao médico, e ele diz: a gente pode fazer A ou pode fazer B.
-"A" tem esses benefícios e esses riscos.
-"B" tem esses benefícios e esses riscos. O que você quer fazer?
-E você diz, "Doutor, o que eu devo fazer?"
-E ele diz, "A" tem esses benefícios e riscos, e "B" tem esses benefícios e riscos.
-O que você quer fazer?
-E você diz, "Se você fosse eu, Doutor, o que você faria?"
-E o médico diz. "Mas eu não sou você."
-E o resultado é o que a gente chama de "autonomia do paciente," o que parece uma coisa boa. Mas na verdade é uma transferência da responsabilidade de decisão de alguém que sabe alguma coisa -- o médico -- para alguém que não sabe nada, pode estar doente e não está na melhor condição de tomar decisões -- o paciente.
-Existem grandes campanhas publicitárias de remédios voltadas para pessoas como você e eu, o que, se formos pensar, não faz nenhum sentido, já que não podemos comprar esses remédios.
-Por que eles querem nos vender se não podemos comprar?
-A resposta é que eles esperam que a gente ligue para o médico no dia seguinte e peça para que a receita seja mudada.
-Uma coisa dramática como a própria identidade agora virou uma questão de escolha, como mostra esse slide.
-Nós não herdamos uma identidade, nós a inventamos.
-E a gente pode se reinventar quantas vezes quiser.
 Isso significa que todo dia ao acordar de manhã, você tem que decidir que tipo de pessoa quer ser.
 Com respeito a casamento e família, existia um tempo em que a perspectiva de quase todo mundo era de se casar o mais cedo possível, para ter filhos o mais cedo possível.
 A única escolha real era "quem", não "quando", e não o que se fazia depois.
@@ -590,3 +501,298 @@ Vocês aceitam isso -- porque se a gente olhar com um mínimo de distanciamento,
 Eu acho que ela é odiosa.
 E também acredito que seja perigosa, e eu não quero vê-la perpetuada no próximo século.
 Eu acho que é muito melhor a gente encorajar as mentes criativas a viver.
+E, com toda a certeza, eu sei que na minha situação, seria muito perigoso eu me deixar levar para aquele caminho escuro se considerarmos particularmente as circunstâncias em que me encontro agora, em minha carreira.
+Que é o seguinte, vejam: Eu sou bem jovem, tenho apenas 40 anos de idade
+Com pelo menos outras quatro décadas de trabalho pela frente,
+E é muito provável que, qualquer coisa que eu escreva a partir de agora será julgada pelo mundo como o trabalho que veio depois do sucesso assustador do meu último livro, certo?
+E eu vou ser bem clara com vocês, porque aqui somos todos amigos, é muito provável que meu maior sucesso tenha ficado para trás.
+Oh, Jesus, que ideia terrível!
+Esse é o tipo de ideia que poderia levar uma pessoa a começar a beber gim às 9 da manhã, e eu não quero fazer isso!
+Eu prefiro continuar a fazer esse trabalho que eu amo.
+Assim, a pergunta agora é: como?
+Depois de muita reflexão, me parece que a maneira como eu devo trabalhar agora, para continuar escrevendo, é criar uma espécie de "construção psicológica protetora", certo?
+Eu preciso encontrar uma forma de colocar uma distância segura entre eu mesma, quando escrevo, e minha ansiedade natural sobre qual será a reação à minha escrita, a partir de agora.
+E, depois de analisar alumas maneiras de fazer isso, durante este ano, eu andei pesquisando através dos tempos, tentando encontrar outras sociedades e ver se elas por acaso tinham ideias melhores e mais saudáveis do que as nossas, sobre como ajudar pessoas criativas a cuidar dos riscos emocionais inerentes à criatividade.
+Essa busca me levou até à Grécia e a Roma antigas.
+Sigam meu raciocínio, logo estaremos de volta onde começamos.
+Na Antiga Grécia e em Roma, as pessoas não acreditavam que a criatividade viesse dos seres humanos, OK?
+Elas achavam que criatividade era um espirito divino de plantão que vinha ter com os seres humanos de uma fonte distante e desconhecida por razões distantes e desconhecidas.
+Os gregos chamavam esses espíritos criativos divinos de "daemons"
+Sócrates, diz a lenda, acreditava ter um daemon que lhe dizia de longe palavras de sabedoria.
+Os romanos tinham a mesma ideia, mas eles chamavam esses espíritos incorpóreos de gênios.
+O que é ótimo, porque os romanos não acreditavam que um gênio era uma pessoa particularmente inteligente.
+Eles achavam que gênio era esse tipo de entidade mágica e divina, que se acreditava que viviam literalmente nas paredes do estúdio de um artista, como Dobby, o gnomo da casa, que saía e ajudava o artista em seu trabalho,de forma invisível, e cuidava de tudo até o final.
+Brilhante! É exatamente desse tipo de distância que estou falando, é a tal "construção psicológica" que vai te proteger do resultado do seu trabalho.
+E todo mundo sabia que era assim que as coisas funcionavam, certo?
+Assim, o artista na antiguidade,ficava protegido de certas coisas, como, por exemplo, de um excesso de narcisismo,
+se seu trabalho fosse brilhante, você não podia levar todos os créditos por isso, todo mundo sabia que você tinha um gênio invisível que te ajudava.
+E se seu trabalho fosse um fracasso, também não era só culpa sua, certo?
+Todo mundo sabia que seu gênio era meio folgado...
+Era assim que as pessoas pensavam sobre a criatividade no mundo ocidental, por bastante tempo.
+Aí veio o Renascimento e mudou tudo, e nós tivemos uma grande ideia, que foi: vamos colocar o homem no centro do universo acima de todos os deuses e mistérios e não haverá mais lugar para criaturas misticas que ditam coisas de uma fonte divina.
+Este foi o início do racionalismo humanista, e as pessoas passaram a acreditar que a critividade vinha inteiramente do "self" dos individuos.
+E pela primeira vez na história, a gente começa a ouvir as pessoas se referirem a este ou aquele artista como sendo um gênio ao contrário de "ter" um gênio.
+Eu preciso dizer que acho que isso foi um grande erro.
+Eu acredito que permitir que alguém, uma mera pessoa, acredite que ele ou ela é o vaso, o molde,a essência e a fonte de todo o mistério criativo, divino, eterno e desconhecido, é um pouco de responsabilidade demais para a nossa psique humana e frágil.
+É como pedir a alguém que engula o Sol.
+Isto só distorce e deforma egos e cria expectativas incontroláveis sobre a nossa atuação.
+E eu acredito que é esta pressão que vem matando nossos artistas durante os últimos 500 anos.
+E, se isso é verdade, e eu acredito que seja, a pergunta se torna: e agora?
+Podemos fazer isso de outra maneira?
+Quem sabe voltar àquela compreensão mais antiga sobre a relação dos humanos com o mistério da criatividade
+ou talvez não.
+Talvez a gente não possa simplesmente apagar 500 anos de pensamento racional humanista num pequeno discurso de 18 minutos.
+E provavelmente há pessoas na platéia, que vão levantar suspeitas cientificas legitimas sobre a noção de que existem fadinhas que seguem a gente e esfregam um suco mágico nos nossos projetos, e tal.
+Provavelmente eu não consiga convencer todos vocês.
+Mas a questão que eu quero colocar é: por que não?
+Por que não pensar sobre isso dessa maneira?
+Para mim faz tanto sentido quanto todas as outras coisas que já ouvi a respeito em termos de explicar os caprichos enlouquecedores do processo criativo.
+Um processo que, todo mundo que já tentou fazer algo, todo mundo que está aqui, basicamente -- sabe que não se comporta apenas de forma racional.
+E que, de fato, muitas vezes parece ser inteiramente paranormal.
+Eu me encontrei recentemente com a extraordinária poeta americana Ruth Stone, que está com 90 anos, e foi poeta a vida inteira e ela me contou que quando crescia no interior da Virginia, trabalhando na lavoura, ela podia sentir e ouvir um poema chegar até ela por sobre a paisagem.
+Ela contou que era como uma lufada estrondosa de ar que
+que descia atrás dela até o campo.
+E ela sabia que estava chegando, porque a terra tremia debaixo de seus pés.
+E ela sabia que só podia fazer uma coisa: que era, em suas próprias palavras, "correr como o diabo"
+e ela "corria como o diabo" até a casa como se estivesse sendo perseguida pelo poema, e ela tinha que pegar uma folha de papel e um lápis, bem depressa, de tal maneira que quando o poema passasse através dela, ela pudesse agarrá-lo e prendê-lo naquela página.
+Algumas vezes ela não era rápida o suficiente e apesar de correr e correr, ela não chegava ao papel a tempo e o poema atravessava o corpo dela e ela o perdia e continuava a seguir através da planície procurando, como ela dizia , "por um outro poeta".
+Algumas outras vezes, e essa é a parte que eu nunca esqueço, ela falou que havia momentos em que o poema passava raspando
+e ela ia correndo até a casa atrás do papel e o poema a atravessava, e ela pegava o lápis no momento em que ele estava passando por ela e ela dizia que era como se ela o pegasse com a outra mão e o agarrasse.
+Ela pegava o poema pelo rabo, e o puxava de volta para dentro do seu corpo enquanto transcrevia a página
+e nessas instâncias, o poema aparecia sobre o papel perfeito e intacto, mas de cabeça para baixo, começando pela última palavra
+Quando eu ouvi isso, eu fiquei tipo -- isso é bizarro, é exatamente assim que funciona o meu processo criativo.
+Meu processo criativo vai bem além disso, eu não sou apenas uma antena!
+Eu sou uma mula, de tanto que eu trabalho, eu tenho que acordar todos os dias na mesma hora, e suar e escrever e me atirar ao trabalho de uma forma bem atribulada
+e até eu, na minha mulice, já me encontrei de raspão com essa coisa, algumas vezes,
+e imagino que muitos de vocês também já tenham passado por isso
+Até comigo já aconteceu de trabalhos ou idéias chegarem até mim através de uma fonte que eu honestamente não consigo identificar.
+O que é essa coisa?
+E como devemos nos relacionar com ela de tal forma que ela não nos faça perder a cabeça, mas, que, na verdade, nos ajude a sermos saudáveis?
+E para mim, o melhor exemplo contemporâneo que temos de como fazer isso, é o musico Tom Waits que eu entrevistei para uma revista anos atrás
+Nós estávamos falando sobre isso e Tom, vocês sabem, durante a maior parte de sua vida, foi o protótipo do artista atormentado moderno e contemporâneo, tentando dominar e administrar esses impulsos criativos incontroláveis que estavam totalmente internalizados nele.
+Mas aí ele ficou mais velho, mais calmo, e ele me contou que um dia estava dirigindo o carro numa marginal de Los Angeles, e foi quando tudo mudou.
+Ele estava correndo e de repente ele ouviu um pequeno fragmento de melodia, que surgiu na sua cabeça, uma inspiração que surge às vezes, fugidia e tentadora, e você quer registrá-la pois é linda, ele a deseja, mas não tem como agarrá-la.
+Não tem papel, nem lápis nem gravador,
+E ele começa a sentir aquela ansiedade brotar nele tipo "eu vou perder essa coisa", e esta canção vai me assombrar para o resto da vida.
+Eu não sou bom o suficiente para fazer isso."
+Mas em vez de entrar em pânico, ele parou.
+Ele simplesmente parou aquele processo mental e fez algo completamente inusitado.
+Ele olhou para o céu e disse, "Desculpe, mas você não vê que eu estou dirigindo?"
+"Eu estou com cara de quem vai escrever uma canção agora?
+Se você quer realmente existir, volte num momento mais oportuno em que eu possa cuidar de você.
+Ou então, vai enlouquecer outra pessoa...
+Vai atrás do Leonard Cohen".
+E todo o seu processo de trabalho mudou depois disso.
+Não o trabalho, que na maioria das vezes continua tão escuro quanto antes.
+Mas o processo e a ansiedade que pesava em torno dele se liberaram quando ele tirou o génio de dentro dele onde ele só criava problema, e devolveu-o ao lugar de onde tinha vindo. E percebeu que não tinha que viver essa coisa internalizada e tormentosa
+e que ela podia ser apenas uma colaboração maravilhosa e bizarra uma espécie de bate papo entre Tom e aquela coisa estranha fora dele, que não era exatamente Tom.
+Quando eu ouvi essa história eu comecei a mudar um pouco minha forma de trabalhar, e isso já me salvou uma vez.
+Essa idéia me salvou quando eu estava no meio do livro "Comer, Rezar, Amar" e cai num desses poços de desespero em que todos nós caímos quando estamos trabalhando em algo que não acontece e você começa a pensar que vai acabar em desastre, e que o seu livro será a pior obra já escrita.
+Não apenas ruim, mas o pior livro de toda a história.
+E comecei a pensar em engavetar o projeto.
+E então eu me lembrei de Tom, falando para o ar, e experimentei fazer o mesmo.
+Eu levantei o rosto do manuscrito e dirigi meus comentários a um canto vazio da sala.
+E disse em voz alta, " Escuta aqui, sua coisa, você e eu sabemos que se este livro não for brilhante, a culpa não será toda minha, certo?
+Porque você está vendo que estou colocando tudo que eu tenho nele E eu não tenho nada além disso.
+Então, se você quer que ele fique melhor, dê as caras e faça a sua parte.
+OK. E se você não fizer isso, quer saber? Dane-se!
+Eu vou continuar escrevendo do mesmo jeito por que este é meu ofício.
+E eu gostaria que hoje ficasse registrado em nossa agenda que eu compareci para fazer minha parte do trabalho.
+Porque --  no fim das contas é assim, OK -- séculos atrás nos desertos do norte da África, as pessoas se encontravam para fazer música e dançar ao luar que duravam horas, até o amanhecer.
+E elas eram magníficas porque os dançarinos eram profissionais eles eram incríveis, sabe?
+Mas uma vez ou outra, raramente, acontecia alguma coisa, e um desses bailarinos realmente transcendia.
+E eu sei que vocês sabem do que estou falando, porque eu sei que todos vocês já viram, em algum momento de sua vida, uma atuação como esta.
+E foi como se o tempo parasse, e o dançarino entrasse numa espécie de portal e ele não fazia nada diferente do que vinha fazendo desde há mil noites atrás mas é como se tudo se alinhasse.
+E não mais que de repente ele deixasse de ser apenas humano.
+E ele era iluminado de dentro para fora, e debaixo para cima, todo iluminado pelo fogo divino.
+E quando isso acontecia, naquele tempo, as pessoas sabiam do que se tratava e a chamavam pelo nome.
+Elas juntavam as mãos e cantavam, "Alá, Alá, Alá, Deus, Deus, Deus".
+Era Deus, entendem?
+Uma nota de rodapé curiosa -- historicamente, quando ou mouros invadiram a Espanha, eles levaram consigo esse costume e sua pronúncia mudou com o passar do tempo, de "Alá, Alá, Alá, para Olé, olé, olé" que ainda se ouve em touradas e danças flamencas.
+Na Espanha, quando um artista faz alguma coisa impossível e mágica, "Alá, olé, olé, magnífico, bravo" é algo incompreensível é um lampejo de Deus.
+O que é ótimo, porque nós precisamos dele.
+Mas a parte complicada acontece na manhã seguinte, para o dançarino, quando ele acorda e descobre que é terça feira são 11 da manhã e ele não é mais um lampejo divino.
+Ele é apenas um mortal que está envelhecendo com joelhos estourados, e quem sabe ele nunca mais suba tão alto
+E que talvez ninguém mais cante seu nome outra vez enquanto ele gira, e então, o que ele deve fazer com o resto de sua vida?
+É difícil.
+Esta é um dos mais dolorosos acertos a se fazer numa vida criativa.
+Mas digamos que isso não tenha que ser tão angustiante se você nunca acreditar, em primeiro lugar, que os aspectos mais extraordinários do seu ser vem de você.
+Quem sabe seja melhor acreditar que eles são emprestados a você por uma fonte inimaginável de uma parte rara de sua vida que será passada para alguém quando você partir.
+E acreditem, se a gente pensa nisso desta forma, tudo começa a mudar.
+Foi assim que eu comecei a pensar, e é assim que tenho pensado nesses últimos meses enquanto trabalho no livro que devo publicar em breve a tal perigosa, apavorante e muito aguardada continuação do meu louco sucesso.
+E o que eu digo a mim mesma quando eu fico realmente enlouquecida com isso, é: não tenha medo.
+Não desanime.
+Apenas faça o seu trabalho.
+Continue a comparecer para fazer sua parte, seja ela qual for.
+Se seu trabalho é dançar, dance.
+E se o génio divino e maroto que foi designado para acompanhar o seu caso permitir que através do seu esforço aconteça um lampejo maravilhoso, então, "Olé"!
+E se não, faça a sua dança,do mesmo jeito,
+E "Olé" para você da mesma forma.
+Eu acredito nisso e acho que devemos ensinar isso uns aos outros.
+"Olé!" para você, apesar de tudo, simplesmente por possuir esse puro amor humano e a teimosia de continuar aparecendo para fazer a sua parte.
+Obrigada.
+Obrigada.
+June Cohen: Olé!
+Ano passado lhes mostrei essas duas imagens com o fim de demonstrar que a camada de gelo ártico, a qual, durante grande parte dos últimos três milhões de anos foi do tamanho dos Estados Unidos continental encolheu 40 por cento.
+Mas isso subestima a seriedade desse problema, em especial porque nao mostra a espessura do gelo.
+A camada de gelo ártico é, de certo modo, o coração pulsante do sistema climático global.♪
+Ela se expande no inverno e se encolhe no verão.
+A próxima imagem que mostrarei será um rápido avanço do que aconteceu nos últimos 25 anos.
+O gelo permanente aparece em vermelho.
+Como vemos, ele se expande para a área azul marinho. Esse é o gelo anual durante o inverno. E no verão, ele contrai.
+O gelo conhecido como permanente, isto é, com cinco anos, ou mais, de existência, como podemos ver, é quase como sangue, esvaindo-se de dentro do corpo, aqui.
+Em 25 anos transformou-se disso, nisso.
+Isso é um problema porque o aquecimento aquece o solo congelado ao redor do oceano ártico♫ onde há uma quantidade massiva de carbono congelado que, quando derrete, é transformado em metano pelos micróbios.
+Comparado à quantidade total de poluição gerada pelo aquecimento global na atmosfera, esse montante pode dobrar se ultrapassarmos esse ponto crítico.
+Em alguns lagos rasos do Alaska já se pode ver¥ metano ativo borbulhando na superfície da água.
+A Professora Katey Walter da Universidade do Alaska foi com outro time a outro pequeno raso, no inverno passado.¾
+Video: Uau!
+Al Gore: Ela está bem. A questão é se nós vamos estar bem.
+E uma das razões é que esse enorme tanque de calor aquece o norte da Groenlândia.
+Esse é um rio formado pelo degelo
+Mas a quantidade derretida é muito maior do que anteriormente.
+Esse é o rio Kangerlussauq no sul da Groenlândia.
+Se quiser saber como o nível do mar sobe a partir do derretimento de gelo terrestre esse é o ponto onde se encontra com o mar.
+Esses fluxos estão crescendo muito rápidamente.
+No outro lado do planeta, está a Antártica, a maior massa glacial do planeta.
+Mês passado os cientistas anunciaram que todo o continente agora está com saldo negativo de gelo.
+E na Antártica do oeste algumas ilhas submarinas amontoadas estão derretendo de maneira particularmente rápida.
+Isso equivale a 20 do nível do mar, como o é a Groenlândia.
+No Himalaia, a terceira maior geleira do mundo, do topo se pode ver novos lagos que, há alguns anos atrás, eram geleiras.
+40 por cento de todas as pessoas do mundo obtém metade de sua água potável do fluxo advindo desse derretimento.
+Nos Andes, essa geleira é a fonte de água potável para toda cidade.
+Os fluxos aumentaram.
+Mas quando eles se esvaírem, com eles se vai grande parte da água potável.€
+Na Califórnia houve um declínio de 40 por cento na massa de gelo da Sierra.
+Isso está afetando os reservatórios.
+E as previsões, como você leu, são sérias.
+Esse processo de secamento mundial levou a um dramático aumento nas queimadas.½
+E os desastres pelo mundo afora tem crescido em um ritmo completamente extraordinário e inigualável.
+Nos últimos 30 anos foram quatro vezes mais do que nos 75 anos anteriores.
+Esse ritmo é totalmente insustentável.
+Se você olhar no contexto da história você pode ver o que isto está causando.
+Nos últimos cinco anos adicionamos 70 milhões de toneladas de gás carbônico♫ a cada 24 horas -- 25 milhões de toneladas por dia nos oceanos.
+Olhe cuidadosamente para o Pacífico leste, a partir das américas, extendendo-se para o oeste, e em cada lado do subcontinente Indiano, onde há uma deficiência radical de oxigênio nos oceanos.
+A maior causa do aquecimento global, além do desmatamento, que corresponde a 20 por cento do problema, há também o uso de combustíveis fósseis.
+Petróleo é um problema, e carvão é o problema mais sério.
+Os Estados Unidos são um dos dos maiores emissores, junto com a China.
+E a proposta é construir muitas outras usinas de carvão.
+Mas nós estamos começando a ver uma mudança de panorama.
+Aqui estão as usinas que foram canceladas nos últimos anos e propostas verdes foram feitas para substituí-las.
+No entanto, há uma batalha política no nosso país.
+E as indústrias de carvão e as indústrias de petróleo gastaram um quarto de bilhão de dólares no último ano para promover o carvão limpo, o qual é uma oxímoro.™
+Essa imagem me lembrou de uma coisa.
+Perto do Natal, em minha cidade, no Tennessee, um bilhão de galões de resíduos tóxicos do carvão foram derramados.
+Provavelmente você assistiu nas notícias.
+Em todo país, esse é o segundo maior canal de resíduos da América
+Isso aconteceu perto do Natal.
+Um dos comerciais da indústria do carvão na época do Natal foi o seguinte.
+Video: ♪♫ Nevadinho, o homem de carvão, é um companheiro alegre e feliz.
+Ele é abundante aqui na América, e ele ajuda a nossa economia crescer.
+Nevadinho, o homem de carvão está ficando mais limpo a cada dia.
+Ele é barato e camarada, e por causa dele os trabalhadores podem receber seu salário.
+Al Gore: Essa é a fonte de grande parte do carvão da Virgínia do Oeste.
+O maior mineiro de picos de montanha é o dono da Massey Coal.
+Video: Don Blankenship: Vou ser bem claro. Al Gore, Nancy Pelosi, Harry Reid, eles não sabem do que estão falando.
+Al Gore: Então a Aliança pela Proteção do Clima criou duas campanhas.
+Essa é uma delas, parte de uma delas.
+Video: Ator: Na empresa COALergy nós vemos as mudanças climáticas como uma ameaça muito séria ao nosso negócio.
+Por isso nosso objetivo principal agora é gastar uma grande soma em dinheiro em enforços publicitários para ajudar a bagunçar e complicar a verdade sobre o carvão.
+O fato é que o carvão não é poluente.
+Nós acreditamos que ele é limpo -- e que cheira bem.
+Então, não se preocupe com mundança climática.
+Deixe isso conosco.
+Vídeo: Ator: Carvão limpo, você ouviu muito sobre isso.
+Então vamos fazer um passeio por essa fábrica de carvão limpo de última geração.
+Impressionante! O equipamento é meio barulhento.
+Mas esse é o som da tecnologia do carvão limpo.
+E enquanto queimar carvão é uma das principais causas de aquecimento global, a fantástica tecnologia de carvão não poluente que você vê aqui muda tudo.
+Dê uma boa e longa olhada, isso é a tecnologia do carvão limpo de hoje em dia. .
+Al Gore: Finalmente a alternativa positiva se enreda com nosso desafio econômico e o desafio da nossa segurança nacional.
+Video: Narrador: A América do Norte está em crise, a economia, a segurança nacional, a crise climática.
+E a conexão que liga a todos eles é o nosso vício em combustíveis a base de carbono, como o carvão poluente e o petróleo estrangeiro.©
+Mas agora há uma solução nova e corajosa para nos tirar dessa situação.
+Revigorize a América com 100 por cento de eletricidade limpa, em um prazo de dez anos.
+Um plano para reposicionar a América de volta ao trabalho, para fazer-nos mais seguros, e ajudar-nos a parar o aquecimento global.
+Finalmente, uma solução que é suficientemente boa para resolver nossos problemas.
+Revigorize a América. Descubra mais a respeito.
+Al Gore: Esse é o último.
+Vídeo: Narrador: é sobre revigorizar a América.
+Uma das maneiras mais rápidas de cortar nossa dependência nos velhos combustíveis poluentes que estão matando nosso planeta.
+Homem: O futuro está aqui. Vento, sol, uma nova rede de fontes de energia.
+Homem No. 2: Novos investimentos para criar empregos com bons salários.
+Narrador: Revigorize a América. É hora de cair na realidade.
+Al Gore: Há um velho provérbio africano que diz, "Se quiser ir rápido, vá só.
+Se quiser ir longe, vá acompanhado."
+Nós temos que ir longe, e rápido.
+Muito obrigado.
+Eu quero começar pedindo a vocês para lembrarem de suas infâncias, brincando com blocos.
+Conforme você descobria como alcançá-los e segurá-los, podia empilhar ou movê-los, você estava, na verdade, aprendendo como pensar e resolver problemas através da compreensão e manipulação das relações espaciais.
+O pensamento espacial está profundamente relacionado com a forma como entendemos muita coisa que nos cerca no mundo.
+Então, como um cientista computacional inspirado nesta utilidade de nossas interações com objetos físicos -- junto com meu supervisor Patti e meu colaborador Jeevan Kalanithi -- Eu comecei a imaginar -- e se quando a gente usasse um computador, em vez de termos um cursor de mouse que parece um dedo indicador digital que se move numa mesa achatada, e se nós pudéssemos alcançar com ambas as mãos e capturar a informação fisicamente, organizando-a da forma que desejamos?
+Esta pergunta era tão urgente que decidimos explorar sua resposta, construindo os Siftables.
+Em resumo, um Siftable é um computador interativo do tamanho de um biscoito.
+Eles podem ser movimentados com as mãos, e percebem o que os cercam, eles percebem seus movimentos, e eles têm uma tela e transmissão sem fio.
+Mais importante, eles são físicos, então, como os blocos, você pode movê-los arrastando e segurando.
+E os Siftables são um exemplo de um novo ecosistema de ferramentas para manipular informação digital.
+E uma vez que estas ferramentas se tornem mais físicas, mais conscientes dos seus movimentos, conscientes do que as cercam, e entenderem as nuances de como as movimentamos, nós podemos começar a explorar algumas novas e divertidas formas de interação.
+Por isso, eu vou começar com exemplos simples.
+Este Siftable está configurado para exibir vídeos, e se movê-lo em uma direção, ele vai mostrar o filme para a frente, se movê-lo para cá, ele mostra o vídeo de trás para a frente.
+E estes retratos interativos têm ciência de cada um.
+Então se eu colocá-los próximos, eles se interessam.
+Se eles ficam cercados, eles percebem isso também, e podem se tornar um pouco perturbados.
+E eles também podem sentir seus movimentos e inclinações .
+Uma das implicações interessantes da interação, nós começamos a perceber, era que poderíamos usar gestos coditianos como informação, como despejar uma cor da mesma forma que despejamos um líquido.
+Neste caso, temos três Siftables configurados para serem baldes de tinta e posso usá-los para despejar cores neste do meio, onde elas se misturam.
+Se a gente exagerar, podemos tirar um pouco de volta.
+Também há possibilidades perfeitas para a educação, como linguagem, matemática e jogos lógicos onde nós queremos permitir que as pessoas experimentar as coisas rapidamente, e ver os resultados imediatamente.
+Então cá estou eu --  Esta é uma sequência Fibonacci que estou fazendo com um programa simples de equações.
+Aqui temos um jogo de palavras que é uma mistura de Palavras-Cruzadas e Forca.
+Basicamente, em cada rodada você ganha uma letra em cada Siftable, e conforme você tenta formar palavras, ele verifica num dicionário.
+Então, depois de 30 segundos ele começa de novo, e você tem um novo conjunto de letras e possibilidades para experimentar.
+Obrigado.
+Estas são algumas crianças que fizeram uma visita ao Laboratório de Mídia, e eu consegui que eles experimentassem e filmei.
+Eles realmente adoraram.
+E uma das coisas interessantes sobre este tipo de aplicação é que você não precisa dar muitas instruções às pessoas.
+Tudo o que tem que dizer é: "Forme palavras", e elas sabem exatamente o que fazer.
+Aqui está outro grupo experimentando.
+Este é nosso mais jovem beta tester, abaixo à direita.
+No final, tudo o que ele quis fazer foi empilhar os Siftables.
+Para ele, eles eram apenas blocos.
+Agora, esta é uma aplicação interativa de desenho-animados.
+E nós queríamos construir uma ferramenta de aprendizagem para quem aprende uma língua.
+E este é Felix.
+E ele pode trazer novos personagens à cena, apenas levantando os Siftables da mesa onde os personagens estão e os mostrando.
+Aqui, ele está trazendo o sol para fora.
+Video: O sol está nascendo.
+David Merrill: Agora ele coloca um trator dentro da cena.
+Video: o trator laranja
+Bom trabalho!
+Então chacoalhando os Siftables e colocando-os perto dos outros ele pode fazer os personagens interagirem -- Video: Lobo!
+DM: inventando a sua própria história.
+Video: Olá!
+DM: É uma história aberta, e ele pode decidir como ela acontece.
+Video: o gato sai voando.
+DM: Então como último exemplo que eu posso mostrar hoje é a ferramenta sequenciadora de música e performance ao vivo que construímos recentemente, na qual os Siftables funcionam como sons como metais, baixo e bateria.
+Cada um destes tem quatro variações diferentes, você escolhe qual você quer usar.
+E você pode inserir estes sons em uma sequência que você pode organizar no padrão que desejar.
+E você faz isso simplesmente encostando o Siftable sonoro contra uma sequência Siftable vazia.
+Existem efeitos que você pode controlar ao vivo, como o reverberar e os filtros.
+Você o encosta a um som e então o inclina para ajustar.
+E então, os efeitos gerais, como o tempo e o volume são aplicados à sequência inteira.
+Vamos ver como é isso.
+Video: musica DM: começamos colocando um metal em dois Siftables em sequência, arranjando-os em uma série, estendendo, colocando mais metal.
+Agora eu insiro uma linha de baixo.
+video: musica DM: agora vou colocar uma percussão.
+video: musica DM: e agora vou adicionar um filtro à bateria, para eu poder controlar o efeito ao vivo.
+video: musica DM: eu posso acelerar toda a sequência inclinando o tempo para um lado ou para o outro
+video música DM: e agora eu vou juntar um filtro para o baixo ganhar um pouco mais de expressão.
+video: música DM: Eu posso reorganizar a sequência enquanto ela toca.
+Então eu não tenho que planejar antes, mas eu posso improvisar, fazê-la mais longa ou mais curta conforme eu toco.
+E agora, finalmente, eu posso silenciar toda a sequência½ inclinando o Siftable de volume para a esquerda.
+Obrigada
+Então, como vocês podem ver, minha paixão é fazer novas interfaces entre homem e computador que se encaixem melhor na forma como nossos cérebros e corpos funcionam.
+E hoje, Eu tenho tempo para mostrar a vocês mais uma coisa sobre este novo campo de projetos, e algumas das possibilidades que estamos trabalhando para tirar do laboratório.
+Então o pensamento que eu quero deixar com vocês é que nós estamos à beira de uma nova geração de ferramentas para interagir com a mídia digital, que vão trazer informação para o nosso mundo do nosso jeito.
+Muito obrigado.
+Eu espero poder conversar com todos vocês.

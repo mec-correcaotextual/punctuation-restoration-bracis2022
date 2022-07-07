@@ -7,7 +7,7 @@ lines_dev = np.array([line.strip() for line in open(os.path.join(BASE_DIR, 'tedt
 lines_train = np.array([line.strip() for line in open(os.path.join(BASE_DIR, 'tedtalk2012.train.txt'), 'r', encoding='utf-8').readlines()])
 lines_test = np.array([line.strip() for line in open(os.path.join(BASE_DIR, 'tedtalk2012.test.txt'), 'r', encoding='utf-8').readlines()])
 
-kf = KFold(n_splits=3)
+kf = KFold(n_splits=10)
 
 for i, (train_index, _) in enumerate(kf.split(lines_train), 1):
     path = f'./texts/tedtalk2012/dataset{i}/'
