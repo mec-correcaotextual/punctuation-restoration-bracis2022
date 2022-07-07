@@ -28,7 +28,7 @@ parser.add_argument('--dataset',
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
 parser.add_argument('--n_epochs',
-                    default=12,
+                    default=1,
                     type=int,
                     help='Files must be a dataframe with headers sentence_id,words,label')
 
@@ -116,7 +116,7 @@ if args.k_fold_eval:
             # saves the model
             artifact = wandb.Artifact('bert-model', type='model')
             artifact.add_dir(model_dir)
-
+            if folder == 'dataset2': break
     os.makedirs('./results/', exist_ok=True)
     pd.DataFrame(results_micro_avg).to_csv('./results/micro_avg_results.csv')
     pd.concat(results_ents).to_csv('./results/micro_avg_ents_results.csv')
