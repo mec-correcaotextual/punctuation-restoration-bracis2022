@@ -110,14 +110,16 @@ if args.k_fold_eval:
             micro_avg, ents = evaluate(model, dataset['test'])
             micro_avg.update({'dataset_name': folder, 'classifier_name': 'bert-base'})
             results_micro_avg.append(micro_avg)
-            results_ents.append(ents)
+
+            ents.update({'dataset_name': folder, 'classifier_name': 'bert-base'})
+            results_ents.append(pd.DataFrame(ents))
             # saves the model
             artifact = wandb.Artifact('bert-model', type='model')
             artifact.add_dir(model_dir)
 
     os.makedirs('./results/', exist_ok=True)
     pd.DataFrame(results_micro_avg).to_csv('./results/micro_avg_results.csv')
-    pd.DataFrame(results_ents).to_csv('./results/micro_avg_ents_results.csv')
+    pd.concat(results_ents).to_csv('./results/micro_avg_ents_results.csv')
 
 else:
 

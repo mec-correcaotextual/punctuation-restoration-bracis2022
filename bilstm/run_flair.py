@@ -106,12 +106,16 @@ def train(args):
                 generate_test_file(test_results_file, new_test_file)
                 micro_avg, per_ents = evaluate(corpus, os.path.join(model_dir, 'best-model.pt'))
                 micro_avg.update({'dataset_name': folder, 'classifier_name': 'bi-lstm'})
+                micro_avg.pop('support')
+
+                per_ents.update({'dataset_name': folder, 'classifier_name': 'bi-lstm'})
+
                 results_micro_avg.append(micro_avg)
-                results_ents.append(per_ents)
+                results_ents.append(pd.DataFrame(per_ents))
 
         os.makedirs('./outputs/', exist_ok=True)
         pd.DataFrame(results_micro_avg).to_csv('./outputs/micro_avg.csv')
-        pd.DataFrame(results_ents).to_csv('./outputs/micro_avg_ents.csv')
+        pd.concat(results_ents).to_csv('./outputs/micro_avg_ents.csv')
 
     else:
 

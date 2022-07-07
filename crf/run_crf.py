@@ -74,12 +74,14 @@ def run(args):
 
                 micro_avg = dict_report.pop('micro avg')
                 micro_avg.update({'dataset_name': folder, 'classifier_name': 'crf'})
+                micro_avg.pop('support')
                 results_micro_avg.append(micro_avg)
 
                 dict_report.pop('macro avg')
                 dict_report.pop('weighted avg')
+                dict_report.update({'dataset_name': folder, 'classifier_name': 'crf'})
 
-                results_ents.append(dict_report)
+                results_ents.append(pd.DataFrame(dict_report))
 
                 data_conll = ''
 
@@ -102,7 +104,7 @@ def run(args):
                     file.write(data_conll)
         os.makedirs('./results/', exist_ok=True)
         pd.DataFrame(results_micro_avg).to_csv('./results/micro_avg_results.csv')
-        pd.DataFrame(results_ents).to_csv('./results/micro_avg_ents_results.csv')
+        pd.concat(results_ents).to_csv('./results/micro_avg_ents_results.csv')
     else:
 
         report_dir = f'./results/{corpus_name}'
