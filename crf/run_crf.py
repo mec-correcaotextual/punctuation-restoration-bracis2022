@@ -82,7 +82,7 @@ def run(args):
                 dict_report.update({'dataset_name': folder, 'classifier_name': 'crf'})
 
                 results_ents.append(pd.DataFrame(dict_report))
-
+                if folder == 'dataset2': break
                 data_conll = ''
 
                 for data, real_tags, pred_tags in zip(test_data, y_test, y_pred):
